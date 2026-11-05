@@ -35,7 +35,7 @@ export function licenseName(metric, sourceCode=null) {
 export function matchesLicense(metric, selected, sourceCode=null) {
   if (!selected || selected === "all") return true;
   const license = licenseName(metric,sourceCode);
-  if (selected === "known") return license !== null;
+  if (selected === "known") return license !== null && license !== "Proprietary";
   if (selected === "unknown") return license === null;
   if (selected === "Proprietary") return license === "Proprietary";
   if (!license) return false;

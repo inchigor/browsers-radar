@@ -58,6 +58,7 @@ test("closed-source projects have no inferred GitHub metrics and can be filtered
   assert.equal(licenseName({},"closed"),"Proprietary");
   assert.equal(matchesLicense({},"unknown","closed"),false);
   assert.equal(matchesLicense({},"Proprietary","closed"),true);
+  assert.equal(matchesLicense({},"known","closed"),false);
   assert.deepEqual(filterCatalog([...browsers,row],{...metrics,...observations},{...base,source:"github"},status).map(x=>x.id),["a","b","c"]);
   assert.equal(sortCatalog([browsers[0],row],{...metrics,...observations},"latest-release",status)[0].id,"official/dia");
   assert.deepEqual(filterCatalog([row],observations,{...base,contributors:"1"},status),[]);

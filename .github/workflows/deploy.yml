@@ -6,6 +6,11 @@ on:
       - 'site/**'
       - 'scripts/**'
       - '.github/workflows/deploy.yml'
+  workflow_run:
+    workflows:
+      - 'Browser Radar - weekly discovery'
+      - 'Browser Radar - official release notes'
+    types: [completed]
   workflow_dispatch:
 permissions:
   contents: read
