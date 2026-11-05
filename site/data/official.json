@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "attemptedAt": null,
-  "status": "manual",
+  "attemptedAt": "2026-11-05T19:07:21.797Z",
+  "status": "partial",
   "sources": {
     "official/dia": {
       "sourceUrl": "https://www.diabrowser.com/changelog",
@@ -23,13 +23,13 @@
     },
     "official/orion": {
       "sourceUrl": "https://browser.kagi.com/updates/orion-release-notes.html",
-      "checkedAt": null,
+      "checkedAt": "2026-11-05T19:07:21.797Z",
       "releases": {
         "macOS": {
           "version": "1.1",
           "publishedAt": "2026-06-23",
           "url": "https://browser.kagi.com/updates/orion-release-notes.html",
-          "origin": "official-manual"
+          "origin": "official-auto"
         }
       }
     },
@@ -38,5 +38,7 @@
       "checkedAt": null,
       "releases": {}
     }
-  }
+  },
+  "sourceSuccesses": 1,
+  "sourceFailures": 2
 }
