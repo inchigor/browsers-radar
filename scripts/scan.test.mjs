@@ -6,6 +6,8 @@ test('reject unrelated GitHub resources and forks',()=>{
   assert.equal(looksRelevant({name:'awesome-browser-list',description:'browser links',full_name:'x/awesome-browser-list'}),false);
   assert.equal(looksRelevant({name:'my-browser',description:'macOS',full_name:'x/my-browser',fork:true}),false);
   assert.equal(looksRelevant({name:'movie-player',description:'video and audio',full_name:'x/movie-player'}),false);
+  assert.equal(looksRelevant({name:'desktop-web-browsers',description:null,full_name:'x/desktop-web-browsers'}),false);
+  assert.equal(looksRelevant({name:'desktop-web-browsers',description:'List of macOS browsers',full_name:'x/desktop-web-browsers'}),false);
   for (const [name,description] of [
     ['smart-terminal','Native macOS terminal, a browser per tab'],
     ['openviet-ime','Cross-browser Vietnamese IME for Chromium'],

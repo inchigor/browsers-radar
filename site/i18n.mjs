@@ -82,7 +82,7 @@ export const messages = {
     empty:"Ничего не найдено. Попробуй изменить фильтры.", noScan:"Поиск ещё не запускался", scan:"Поиск",
     scanFailed:"Обновление не удалось", scanPartial:"Обновление неполное",
     metricRelease:"Релиз", metricPush:"Push", metricAuthors:"Авторы (90 дн.)", metricUpdated:"Метрики обновлены",
-    metricLastUpdated:"Обновление кода", metricFirstRelease:"Первый релиз", metricStable:"Последний не-beta релиз", metricLicense:"Лицензия",
+    metricLastUpdated:"Обновление кода", metricFirstRelease:"Первый релиз", metricStable:"Последний релиз без prerelease", metricLicense:"Лицензия",
     metricUnknown:"Дата метрик неизвестна", metricFound:"Найден", metricMissing:"GitHub-метрики появятся после сканирования",
     website:"Сайт ↗", github:"GitHub ↗", myReview:"Моя оценка",
     unknownSummary:"Кандидат найден автоматически. Характеристики пока не проверены.",

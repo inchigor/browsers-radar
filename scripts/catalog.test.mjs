@@ -43,3 +43,9 @@ test("sorting by stars, last push, release dates, and contributors keeps unknown
   assert.deepEqual(sortCatalog(browsers,metrics,"contributors",status).map(x=>x.id),["b","a","c"]);
   assert.deepEqual(sortCatalog(browsers,metrics,"priority",status).map(x=>x.id),["a","b","c"]);
 });
+
+test("sort by actual push timestamp, not only calendar day",()=>{
+  const rows=[{id:"old",name:"Old",repo:"x/old"},{id:"new",name:"New",repo:"x/new"}];
+  const m={"x/old":{lastPush:"2026-11-05T08:00:00Z"},"x/new":{lastPush:"2026-11-05T21:00:00Z"}};
+  assert.deepEqual(sortCatalog(rows,m,"updated",()=> "unreviewed").map(x=>x.id),["new","old"]);
+});

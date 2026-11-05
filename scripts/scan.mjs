@@ -26,6 +26,8 @@ function isJunkName(name) {
 export function looksRelevant(repo) {
   if (!repo || repo.archived || repo.fork || !repo.full_name) return false;
   const name = String(repo.name || "").toLowerCase();
+  if (!String(repo.description || "").trim()) return false;
+  if (/(desktop[-_]?web[-_]?browsers|browser[-_]?lists?|browser[-_]?directories)/i.test(name)) return false;
   if (isJunkName(name)) return false;
   const text = `${name} ${repo.description || ""}`.toLowerCase();
   if (/(awesome|extension|theme|wallpaper|template|starter|bookmarklet|config|dotfiles|crawler|scraper|agent|mcp|sdk|react component)/i.test(name)) return false;

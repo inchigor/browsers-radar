@@ -92,16 +92,6 @@
       "discoveredAt": "2026-11-05T11:07:48.887Z"
     },
     {
-      "id": "enhansome/enhansome-desktop-web-browsers",
-      "name": "enhansome-desktop-web-browsers",
-      "engine": "Unverified",
-      "platform": "Not verified",
-      "url": null,
-      "repo": "enhansome/enhansome-desktop-web-browsers",
-      "summary": "New GitHub discovery. Platform, releases and extensions need independent verification.",
-      "discoveredAt": "2026-11-05T17:44:08.744Z"
-    },
-    {
       "id": "frknue/soprano_web",
       "name": "soprano_web",
       "engine": "Unverified",

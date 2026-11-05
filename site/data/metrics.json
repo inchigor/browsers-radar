@@ -317,23 +317,6 @@
       "commitsTruncated": true,
       "updatedAt": "2026-11-05T17:44:08.744Z"
     },
-    "enhansome/enhansome-desktop-web-browsers": {
-      "stars": 0,
-      "lastPush": "2026-11-04T22:39:19Z",
-      "archived": false,
-      "githubCreatedAt": "2026-08-12T07:38:38Z",
-      "licenseSpdx": null,
-      "latestRelease": null,
-      "lastReleaseAt": null,
-      "latestStableTag": null,
-      "latestStableAt": null,
-      "firstReleaseAt": null,
-      "releaseHistoryComplete": true,
-      "activeAuthors90d": 1,
-      "commitsSample": 94,
-      "commitsTruncated": false,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
-    },
     "frknue/soprano_web": {
       "stars": 0,
       "lastPush": "2026-11-05T17:41:46Z",

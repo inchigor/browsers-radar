@@ -4,6 +4,7 @@ export const PRIORITY = ["primary", "secondary", "testing", "unreviewed", "new",
 
 const number = value => Number.isFinite(value) ? value : null;
 const date = value => typeof value === "string" && /^\d{4}-\d{2}-\d{2}/.test(value) ? value.slice(0, 10) : null;
+const timestamp = value => typeof value === "string" && Number.isFinite(Date.parse(value)) ? Date.parse(value) : null;
 
 export function matchesPlatform(platform, selected) {
   if (!selected || selected === "all") return true;
@@ -71,9 +72,9 @@ export function sortCatalog(rows, metrics, sort, statusOf, lang = "en") {
   const key = metric => {
     if (sort === "stars") return number(metric?.stars);
     if (sort === "contributors") return number(metric?.activeAuthors90d);
-    if (sort === "updated") return date(metric?.lastPush);
-    if (sort === "latest-stable") return date(metric?.latestStableAt);
-    if (sort === "first-release-new" || sort === "first-release-old") return date(metric?.firstReleaseAt);
+    if (sort === "updated") return timestamp(metric?.lastPush);
+    if (sort === "latest-stable") return timestamp(metric?.latestStableAt);
+    if (sort === "first-release-new" || sort === "first-release-old") return timestamp(metric?.firstReleaseAt);
     return null;
   };
   const direction = sort === "first-release-old" ? "asc" : "desc";
