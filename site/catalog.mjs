@@ -57,7 +57,7 @@ export function filterCatalog(rows, metrics, filters, statusOf) {
     if (!matchesDate(metric.latestStableAt, filters.stableSince)) return false;
     if (!matchesLicense(metric, filters.license)) return false;
     const hay = [row.name, row.engine, row.platform, row.repo, row.summary, row.summaryRu, filters.noteOf?.(row)].join(" ").toLowerCase();
-    return hay.includes(filters.q || "");
+    return hay.includes(String(filters.q || "").toLowerCase());
   });
 }
 function compareOptional(a, b, direction = "desc") {
