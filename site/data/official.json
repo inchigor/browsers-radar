@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "attemptedAt": "2026-11-05T19:07:21.797Z",
+  "attemptedAt": "2026-11-05T19:09:37.038Z",
   "status": "partial",
   "sources": {
     "official/dia": {
@@ -23,7 +23,7 @@
     },
     "official/orion": {
       "sourceUrl": "https://browser.kagi.com/updates/orion-release-notes.html",
-      "checkedAt": "2026-11-05T19:07:21.797Z",
+      "checkedAt": "2026-11-05T19:09:37.038Z",
       "releases": {
         "macOS": {
           "version": "1.1",
