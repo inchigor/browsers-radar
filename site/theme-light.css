@@ -237,3 +237,15 @@ dialog::backdrop { background: rgba(30,36,70,.38); }
   .advanced-filters{grid-template-columns:1fr}
   .clear-filters{width:100%}
 }
+
+/* Distinguish scheduled sunset from a user's personal review status */
+.lifecycle-warning{
+  border:1px solid #f0cfba;
+  background:#fff8f2;
+  color:#88502e;
+  border-radius:9px;
+  padding:9px 11px;
+  font-size:12px;
+  line-height:1.45;
+  margin:0 0 12px;
+}

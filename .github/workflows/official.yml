@@ -1,0 +1,42 @@
+name: Browser Radar - official release notes
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/scan-official.mjs'
+      - 'scripts/scan-official.test.mjs'
+      - '.github/workflows/official.yml'
+  schedule:
+    - cron: '43 9 * * 2'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: browser-radar-official
+  cancel-in-progress: false
+jobs:
+  official:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test site and official release parsing
+        run: node --test scripts/*.test.mjs
+      - name: Verify official release notes
+        id: check
+        run: node scripts/scan-official.mjs
+      - name: Commit only public official release data
+        if: ${{ !cancelled() && (steps.check.outcome == 'success' || steps.check.outcome == 'failure') }}
+        run: |
+          if git diff --quiet -- site/data/official.json; then
+            echo "No changes"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site/data/official.json
+          git commit -m 'chore: refresh official browser releases'
+          git push

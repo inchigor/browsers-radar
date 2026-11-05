@@ -49,3 +49,17 @@ test("sort by actual push timestamp, not only calendar day",()=>{
   const m={"x/old":{lastPush:"2026-11-05T08:00:00Z"},"x/new":{lastPush:"2026-11-05T21:00:00Z"}};
   assert.deepEqual(sortCatalog(rows,m,"updated",()=> "unreviewed").map(x=>x.id),["new","old"]);
 });
+
+test("closed-source projects have no inferred GitHub metrics and can be filtered",()=>{
+  const row={id:"official/dia",name:"Dia",platform:"macOS, Windows",source:"official",sourceCode:"closed",engine:"Chromium",summary:"Browser"};
+  const observations={"official/dia":{latestOfficialAt:"2026-10-29",releasesByPlatform:{macOS:{version:"1.55.0"}}}};
+  const list=filterCatalog([...browsers,row],{...metrics,...observations},{...base,source:"official",license:"Proprietary"},status);
+  assert.deepEqual(list.map(x=>x.id),["official/dia"]);
+  assert.equal(licenseName({},"closed"),"Proprietary");
+  assert.equal(matchesLicense({},"unknown","closed"),false);
+  assert.equal(matchesLicense({},"Proprietary","closed"),true);
+  assert.deepEqual(filterCatalog([...browsers,row],{...metrics,...observations},{...base,source:"github"},status).map(x=>x.id),["a","b","c"]);
+  assert.equal(sortCatalog([browsers[0],row],{...metrics,...observations},"latest-release",status)[0].id,"official/dia");
+  assert.deepEqual(filterCatalog([row],observations,{...base,contributors:"1"},status),[]);
+  assert.deepEqual(filterCatalog([row],observations,{...base,stableSince:"2026-01-01"},status),[]);
+});

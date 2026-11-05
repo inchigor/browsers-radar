@@ -27,21 +27,23 @@ export function matchesDate(value, after) {
   const at = date(value);
   return at !== null && at >= after;
 }
-export function licenseName(metric) {
+export function licenseName(metric, sourceCode=null) {
+  if (sourceCode === "closed") return "Proprietary";
   const value = metric?.licenseSpdx;
   return typeof value === "string" && value !== "NOASSERTION" && value.trim() ? value : null;
 }
-export function matchesLicense(metric, selected) {
+export function matchesLicense(metric, selected, sourceCode=null) {
   if (!selected || selected === "all") return true;
-  const license = licenseName(metric);
+  const license = licenseName(metric,sourceCode);
   if (selected === "known") return license !== null;
   if (selected === "unknown") return license === null;
+  if (selected === "Proprietary") return license === "Proprietary";
   if (!license) return false;
   if (selected === "GPL") return /^(?:A?GPL|LGPL)-/.test(license);
   if (selected === "MPL") return /^MPL-/.test(license);
   if (selected === "Apache") return /^Apache-/.test(license);
   if (selected === "MIT") return license === "MIT";
-  if (selected === "other") return !["MIT", "GPL", "MPL", "Apache"].some(group => matchesLicense(metric, group));
+  if (selected === "other") return license !== "Proprietary" && !["MIT", "GPL", "MPL", "Apache"].some(group => matchesLicense(metric, group, sourceCode));
   return true;
 }
 export function filterCatalog(rows, metrics, filters, statusOf) {
@@ -50,13 +52,14 @@ export function filterCatalog(rows, metrics, filters, statusOf) {
     if (filters.view === "new" && status !== "new") return false;
     if (filters.view === "testing" && status !== "testing") return false;
     if (filters.view === "checked" && !["checked", "rejected"].includes(status)) return false;
-    const metric = metrics[row.repo] || {};
+    const metric = metrics[row.repo||row.id] || {};
+    if(filters.source && filters.source !== "all" && (row.source==="official"?"official":"github")!==filters.source)return false;
     if (!matchesPlatform(row.platform, filters.platform)) return false;
     if (filters.engine && filters.engine !== "all" && !String(row.engine).toLowerCase().includes(filters.engine.toLowerCase())) return false;
     if (!matchesContributors(metric, filters.contributors)) return false;
     if (!matchesDate(metric.firstReleaseAt, filters.firstSince)) return false;
     if (!matchesDate(metric.latestStableAt, filters.stableSince)) return false;
-    if (!matchesLicense(metric, filters.license)) return false;
+    if (!matchesLicense(metric, filters.license, row.sourceCode)) return false;
     const hay = [row.name, row.engine, row.platform, row.repo, row.summary, row.summaryRu, filters.noteOf?.(row)].join(" ").toLowerCase();
     return hay.includes(String(filters.q || "").toLowerCase());
   });
@@ -74,6 +77,7 @@ export function sortCatalog(rows, metrics, sort, statusOf, lang = "en") {
     if (sort === "contributors") return number(metric?.activeAuthors90d);
     if (sort === "updated") return timestamp(metric?.lastPush);
     if (sort === "latest-stable") return timestamp(metric?.latestStableAt);
+    if (sort === "latest-release") return timestamp(metric?.latestOfficialAt||metric?.lastReleaseAt);
     if (sort === "first-release-new" || sort === "first-release-old") return timestamp(metric?.firstReleaseAt);
     return null;
   };
@@ -83,7 +87,7 @@ export function sortCatalog(rows, metrics, sort, statusOf, lang = "en") {
       const rank = PRIORITY.indexOf(statusOf(a)) - PRIORITY.indexOf(statusOf(b));
       if (rank) return rank;
     } else if (sort !== "name") {
-      const order = compareOptional(key(metrics[a.repo] || {}), key(metrics[b.repo] || {}), direction);
+      const order = compareOptional(key(metrics[a.repo||a.id] || {}), key(metrics[b.repo||b.id] || {}), direction);
       if (order) return order;
     }
     return a.name.localeCompare(b.name, lang);

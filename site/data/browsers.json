@@ -108,5 +108,46 @@
     "repo": "ysalitrynskyi/stedding-browser",
     "summary": "Open-source Arc-style browser with vertical tabs, Spaces, pinned tabs and folders.",
     "summaryRu": "Открытый браузер в стиле Arc с вертикальными вкладками, Spaces, закреплёнными вкладками и папками."
+  },
+  {
+    "id": "official/dia",
+    "name": "Dia",
+    "engine": "Chromium",
+    "platform": "macOS, Windows",
+    "url": "https://www.diabrowser.com/",
+    "repo": null,
+    "source": "official",
+    "sourceCode": "closed",
+    "releaseNotesUrl": "https://www.diabrowser.com/changelog",
+    "summary": "AI-focused desktop browser from The Browser Company, with vertical tabs, profiles and integrated assistant features.",
+    "summaryRu": "Браузер The Browser Company на Chromium с вертикальными вкладками, профилями и встроенным AI-ассистентом."
+  },
+  {
+    "id": "official/orion",
+    "name": "Orion Browser",
+    "engine": "WebKit",
+    "platform": "macOS, iOS",
+    "url": "https://browser.kagi.com/",
+    "repo": null,
+    "source": "official",
+    "sourceCode": "closed",
+    "releaseNotesUrl": "https://browser.kagi.com/updates/orion-release-notes.html",
+    "summary": "WebKit-based browser from Kagi with built-in content blocking and support for WebExtensions.",
+    "summaryRu": "WebKit-браузер от Kagi со встроенной блокировкой контента и поддержкой WebExtensions."
+  },
+  {
+    "id": "official/arc",
+    "name": "Arc Browser",
+    "engine": "Chromium",
+    "platform": "macOS, Windows",
+    "url": "https://arc.net/",
+    "repo": null,
+    "source": "official",
+    "sourceCode": "closed",
+    "releaseNotesUrl": "https://arc.net/",
+    "lifecycle": "sunsetting",
+    "sunsetDate": "2026-12-22",
+    "summary": "Arc is being sunset on December 22, 2026. The developer recommends migrating to Dia.",
+    "summaryRu": "Работа Arc для ПК прекращается 22 декабря 2026 года. Разработчик рекомендует переход на Dia."
   }
 ]

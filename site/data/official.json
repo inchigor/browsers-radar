@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "attemptedAt": null,
+  "status": "manual",
+  "sources": {
+    "official/dia": {
+      "sourceUrl": "https://www.diabrowser.com/changelog",
+      "checkedAt": null,
+      "releases": {
+        "macOS": {
+          "version": "1.55.0",
+          "publishedAt": "2026-10-29",
+          "url": "https://www.diabrowser.com/changelog/mac/1-55-0",
+          "origin": "official-manual"
+        },
+        "Windows": {
+          "version": "1.4.0",
+          "publishedAt": "2026-10-29",
+          "url": "https://www.diabrowser.com/changelog/windows/1-4-0",
+          "origin": "official-manual"
+        }
+      }
+    },
+    "official/orion": {
+      "sourceUrl": "https://browser.kagi.com/updates/orion-release-notes.html",
+      "checkedAt": null,
+      "releases": {
+        "macOS": {
+          "version": "1.1",
+          "publishedAt": "2026-06-23",
+          "url": "https://browser.kagi.com/updates/orion-release-notes.html",
+          "origin": "official-manual"
+        }
+      }
+    },
+    "official/arc": {
+      "sourceUrl": "https://arc.net/",
+      "checkedAt": null,
+      "releases": {}
+    }
+  }
+}

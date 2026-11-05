@@ -25,7 +25,24 @@ Your notes and classifications use `localStorage` under the key `browsers-radar-
 
 **Caution:** Clearing site data, using private browsing or switching browsers/devices can remove or separate your reviews. Use **Export reviews** regularly and keep the JSON backups somewhere private. **Import reviews** previews new, identical and conflicting entries, supports keeping or replacing conflicts, and preserves entries for browsers not currently in the catalog. Don't commit exported review files to public repositories.
 
-### Reading the project metrics
+### Official browser releases (without GitHub)
+
+Browser Radar supports two independent data sources:
+
+- **GitHub API** for projects with public source repositories: stars, SPDX license, distinct commit authors in a capped 90-day sample, release history and last code push.
+- **Official release notes** for browsers without public GitHub source repositories. This provides verified published versions, dates and source links, but **not** GitHub stars, public developer counts or the first release date.
+
+Initial official-only browsers: **Dia (macOS / Windows)**, **Orion (macOS)**, and **Arc** (included for lifecycle tracking). Arc is scheduled to shut down on **December 22, 2026** according to its own announcement.
+
+The file `site/data/official.json` holds public, non-personal version observations by stable browser ID and platform. It was seeded from the official release notes; the `origin` field distinguishes a manually verified snapshot from a successful automatic check. The site never estimates unsupported figures. For official sources the displayed release means **published**, not necessarily stable.
+
+`scripts/scan-official.mjs` checks a strict list of HTTPS release-note pages: Dia's macOS and Windows changelogs, and the Orion macOS release notes. The `official.yml` GitHub Action runs on Tuesdays at **09:43 UTC** and on demand. It uses only Node.js standard APIs, no credentials and no third-party dependencies. The extractor fails closed: an unreachable page, a changed HTML structure, a source that reports an older release, or an implausible future date **does not overwrite** the last good data. The action records whether checks were successful, partial or failed.
+
+Official pages are less stable than GitHub's API: changes to HTML can require a small parser update. If an official source cannot be reliably parsed, it remains a **manual verification** source rather than being populated from guessed versions. Published release dates for different platforms are tracked separately. A first release date is not inferred from the repository creation date or the first changelog entry.
+
+This does not mirror a user's installed browser, download executables, query private data, or send their personal reviews anywhere.
+
+## Reading the project metrics
 
 - **GitHub stars** are the repository's star count at the last successful scan.
 - **Last updated** means `pushed_at` from GitHub, a code push - **not** a published release.

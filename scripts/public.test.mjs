@@ -42,3 +42,24 @@ test("public site never packages a personal reviews file or legacy storage key",
     assert.equal(Object.hasOwn(browser,"note"),false);
   }
 });
+
+test("official-only browsers have stable IDs, explicit sources and no private user data",()=>{
+  const rows=JSON.parse(read("site/data/browsers.json"));
+  const snapshots=JSON.parse(read("site/data/official.json"));
+  for(const browser of rows.filter(row=>row.source==="official")){
+    assert.equal(browser.repo,null);
+    assert.equal(browser.sourceCode,"closed");
+    assert.match(browser.id,/^official\/[a-z0-9-]+$/);
+    assert.ok(browser.releaseNotesUrl?.startsWith("https://"));
+    assert.ok(snapshots.sources[browser.id],"No snapshot: "+browser.id);
+    for(const release of Object.values(snapshots.sources[browser.id].releases||{})){
+      assert.match(release.publishedAt,/^\d{4}-\d{2}-\d{2}$/);
+      assert.match(release.version,/^\d+(?:\.\d+)+$/);
+      assert.equal(Object.hasOwn(release,"personalReview"),false);
+    }
+  }
+  assert.equal(fs.existsSync(path.join(site,"data/reviews.json")),false);
+  const app=read("site/app.js");
+  assert.ok(app.includes("officialMetric"));
+  assert.ok(app.includes('"browsers.json","discovered.json","metrics.json","official.json"'));
+});
