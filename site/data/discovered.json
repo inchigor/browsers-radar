@@ -1,0 +1,106 @@
+{
+  "scannedAt": "2026-11-05T11:29:53.058Z",
+  "queries": [
+    "\"arc browser\" alternative in:name,description,readme archived:false",
+    "\"vertical tabs\" browser macos in:description,readme archived:false",
+    "browser sidebar swift macos in:description,readme archived:false",
+    "browser webkit macos in:description,readme archived:false",
+    "\"chromium browser\" macos in:description,readme archived:false"
+  ],
+  "candidates": [
+    {
+      "id": "villekivela/omaweb",
+      "name": "omaweb",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": "https://omaweb.app",
+      "repo": "villekivela/omaweb",
+      "summary": "A keyboard-driven web browser with vertical tabs and isolated browsing Spaces.",
+      "discoveredAt": "2026-11-05T10:47:54.031Z"
+    },
+    {
+      "id": "ysalitrynskyi/stedding-browser",
+      "name": "stedding-browser",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": "https://stedding.dev",
+      "repo": "ysalitrynskyi/stedding-browser",
+      "summary": "Open-source Arc-style browser built on Chromium: sidebar with vertical tabs, Spaces, folders, pinned tabs, a command bar, one-click import from Arc. macOS and Windows (Linux is coming soon). No telemetry.",
+      "discoveredAt": "2026-11-05T10:47:54.031Z"
+    },
+    {
+      "id": "YSamed/yalqen",
+      "name": "yalqen",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": "https://yalqen.com",
+      "repo": "YSamed/yalqen",
+      "summary": "An open-source Chromium browser for developers and an alternative to Arc, Chrome, Dia, Brave, Firefox, Zen, and Orion. Vertical tabs, a command bar, an AI panel, and built-in ad and tracker blocking. No browser account required. Available on macOS, with an experimental Linux preview.",
+      "discoveredAt": "2026-11-05T10:47:54.031Z"
+    },
+    {
+      "id": "OMS-Interactive/Aura-Browser",
+      "name": "Aura-Browser",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "OMS-Interactive/Aura-Browser",
+      "summary": "💜 AURA Browser — A modern, customizable Chromium-based browser for macOS, Windows and Android, featuring Prismatic Boost, vertical tabs, Spaces, and a sleek browsing experience.",
+      "discoveredAt": "2026-11-05T10:47:54.031Z"
+    },
+    {
+      "id": "WalkerSucksAtCode/Paddle",
+      "name": "Paddle",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "WalkerSucksAtCode/Paddle",
+      "summary": "Personal macOS WebKit browser",
+      "discoveredAt": "2026-11-05T10:47:54.031Z"
+    },
+    {
+      "id": "wsagency/wsurf",
+      "name": "wsurf",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "wsagency/wsurf",
+      "summary": "WSurf: a native macOS browser fork of Linen, maintained by wsagency.",
+      "discoveredAt": "2026-11-05T10:47:54.031Z"
+    },
+    {
+      "id": "Chaitanya045/koan",
+      "name": "koan",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "Chaitanya045/koan",
+      "summary": "A Zen-style browser built on Chromium: sidebar tabs, workspaces, compact mode, Glance and split view, with a native C++ UI.",
+      "discoveredAt": "2026-11-05T11:07:48.887Z"
+    },
+    {
+      "id": "St0neWan9/open-arc-browser",
+      "name": "open-arc-browser",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "St0neWan9/open-arc-browser",
+      "summary": "An open-source macOS browser built on Chromium, inspired by Arc.",
+      "discoveredAt": "2026-11-05T11:07:48.887Z"
+    },
+    {
+      "id": "timwuhaotian/tap",
+      "name": "tap",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "timwuhaotian/tap",
+      "summary": "A small, fast macOS browser on WebKit, written in Rust. A port of Search.",
+      "discoveredAt": "2026-11-05T11:07:48.887Z"
+    }
+  ],
+  "attemptedAt": "2026-11-05T11:29:53.058Z",
+  "status": "success",
+  "searchFailures": 0,
+  "metricFailures": 0
+}

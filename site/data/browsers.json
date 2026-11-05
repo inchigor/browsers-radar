@@ -1,0 +1,82 @@
+[
+  {
+    "id": "zen-browser/desktop",
+    "name": "Zen Browser",
+    "engine": "Gecko",
+    "platform": "macOS, Windows, Linux",
+    "url": "https://zen-browser.app/",
+    "repo": "zen-browser/desktop",
+    "summary": "Firefox-based browser with vertical tabs and Firefox extension support.",
+    "summaryRu": "Браузер на базе Firefox с вертикальными вкладками и поддержкой расширений Gecko."
+  },
+  {
+    "id": "imputnet/helium",
+    "name": "Helium",
+    "engine": "Chromium",
+    "platform": "macOS, Windows, Linux",
+    "url": "https://helium.computer/",
+    "repo": "imputnet/helium",
+    "summary": "Chromium-based browser with support for browser extensions.",
+    "summaryRu": "Браузер на базе Chromium с поддержкой расширений."
+  },
+  {
+    "id": "mantrakp04/ardia",
+    "name": "Ardia",
+    "engine": "Chromium + WebKit",
+    "platform": "macOS",
+    "url": "https://ardia.dev/",
+    "repo": "mantrakp04/ardia",
+    "summary": "Browser with vertical tabs and a compact macOS interface.",
+    "summaryRu": "Браузер с вертикальными вкладками и интерфейсом для macOS."
+  },
+  {
+    "id": "pauljoda/Crest",
+    "name": "Crest",
+    "engine": "Chromium + WebKit",
+    "platform": "macOS, iOS",
+    "url": "https://crestbrowser.com/",
+    "repo": "pauljoda/Crest",
+    "summary": "macOS browser with tab groups and multiple rendering engines.",
+    "summaryRu": "Браузер для macOS с группировкой вкладок и несколькими движками."
+  },
+  {
+    "id": "lucianodiisouza/flecha-browser",
+    "name": "Flecha",
+    "engine": "Chromium",
+    "platform": "macOS",
+    "url": "https://flecha.dev/",
+    "repo": "lucianodiisouza/flecha-browser",
+    "summary": "Chromium browser with a macOS-focused interface.",
+    "summaryRu": "Chromium-браузер с интерфейсом для macOS."
+  },
+  {
+    "id": "VictorKildahl/cra",
+    "name": "Cra",
+    "engine": "Chromium / CEF",
+    "platform": "macOS",
+    "url": "https://crabrowser.app/",
+    "repo": "VictorKildahl/cra",
+    "summary": "macOS browser built using Chromium Embedded Framework (CEF).",
+    "summaryRu": "Браузер на базе Chromium Embedded Framework для macOS."
+  },
+  {
+    "id": "driceroland/Search",
+    "name": "Search Browser",
+    "engine": "WebKit",
+    "platform": "macOS",
+    "url": "https://searchbrowser.app/",
+    "repo": "driceroland/Search",
+    "summary": "Minimalist macOS web browser.",
+    "summaryRu": "Браузер с минималистичным интерфейсом."
+  },
+  {
+    "id": "bnfy/blanc",
+    "name": "Blanc",
+    "engine": "Chromium / Electron",
+    "platform": "macOS, Windows, Linux",
+    "url": "https://blanc.day/",
+    "repo": "bnfy/blanc",
+    "summary": "Chromium/Electron browser with vertical tabs.",
+    "summaryRu": "Браузер на базе Chromium и Electron с вертикальными вкладками."
+  }
+]

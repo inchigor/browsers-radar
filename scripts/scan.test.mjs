@@ -1,0 +1,98 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {looksRelevant,normalizeCandidate,distinctContributors} from './scan.mjs';
+
+test('reject unrelated GitHub resources and forks',()=>{
+  assert.equal(looksRelevant({name:'awesome-browser-list',description:'browser links',full_name:'x/awesome-browser-list'}),false);
+  assert.equal(looksRelevant({name:'my-browser',description:'macOS',full_name:'x/my-browser',fork:true}),false);
+  assert.equal(looksRelevant({name:'movie-player',description:'video and audio',full_name:'x/movie-player'}),false);
+  for (const [name,description] of [
+    ['smart-terminal','Native macOS terminal, a browser per tab'],
+    ['openviet-ime','Cross-browser Vietnamese IME for Chromium'],
+    ['browser-cli','A CLI for your macOS browser'],
+    ['Bern','Rust native UI; no embedded browser'],
+    ['link-reuse','Reuse existing browser tabs for external links on macOS']
+  ]) assert.equal(looksRelevant({name,description,full_name:'x/'+name}),false,name);
+});
+test('accept candidate without claiming verified features',()=>{
+  const repo={name:'ArcLikeBrowser',description:'Swift browser with vertical tabs for macOS',full_name:'org/ArcLikeBrowser',homepage:'https://example.org'};
+  assert.equal(looksRelevant(repo),true);
+  const candidate=normalizeCandidate(repo,'2026-11-05T10:00:00Z');
+  assert.equal(candidate.engine,'Unverified');
+  assert.equal(candidate.id,'org/ArcLikeBrowser');
+});
+test('count unique non-bot contributors',()=>{
+  const authors=[{author:{login:'alice'}},{author:{login:'alice'}},{author:{login:'bob'}},{author:{login:'dependabot[bot]'}}];
+  assert.equal(distinctContributors(authors),2);
+});
+
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import {run} from './scan.mjs';
+import {countActiveProjects, metricFreshness} from '../site/metrics.mjs';
+
+const now='2026-11-05T12:00:00.000Z';
+async function fixture(t, candidates=[]) {
+  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'browser-radar-test-'));
+  t.after(()=>fs.rm(dir,{recursive:true,force:true}));
+  for(const [name,data] of Object.entries({
+    'browsers.json':[{id:'known/browser',repo:'known/browser'}],
+    'discovered.json':{scannedAt:'2026-10-01T00:00:00Z',candidates},
+    'metrics.json':{scannedAt:'2026-10-01T00:00:00Z',repos:{'known/browser':{stars:42,lastPush:'2026-09-01T00:00:00Z'}}}
+  }))await fs.writeFile(path.join(dir,name),JSON.stringify(data));
+  return dir;
+}
+const load=async (dir,name)=>JSON.parse(await fs.readFile(path.join(dir,name),'utf8'));
+const searchRepo=(name)=>({full_name:name,name:name.split('/')[1],description:'macOS browser with vertical tabs'});
+function fakeApi({items=[],failSearch=false,failMetrics=false,failCommits=false}={}) {
+  return async uri=>{
+    if(uri.startsWith('/search/')) {if(failSearch)throw new Error('offline');return {items};}
+    if(failMetrics)throw new Error('offline');
+    if(uri.includes('/releases/latest'))throw new Error('GitHub API 404 /releases/latest');
+    if(uri.includes('/commits?')){if(failCommits)throw new Error('offline');return [];}
+    return {stargazers_count:10,pushed_at:'2026-11-01T00:00:00Z'};
+  };
+}
+test('preserves all previous candidates without applying new filters or a size cap and avoids new duplicates',async t=>{
+  const old=Array.from({length:101},(_,i)=>({id:`Old/browser${i}`,repo:`Old/browser${i}`,name:i===0?'cracked-browser':`browser${i}`}));
+  const dir=await fixture(t,old);
+  await run({dataDir:dir,now,request:fakeApi({items:[searchRepo('old/BROWSER1'),searchRepo('KNOWN/browser'),searchRepo('new/browser'),searchRepo('NEW/BROWSER')]})});
+  const data=await load(dir,'discovered.json');
+  assert.deepEqual(data.candidates.slice(0,old.length),old);
+  assert.equal(data.candidates.length,102);
+  assert.equal(data.candidates.at(-1).id.toLowerCase(),'new/browser');
+  assert.equal(data.status,'success');
+});
+test('total API failure keeps previous data, records failure and rejects',async t=>{
+  const old=[{id:'old/browser',repo:'old/browser',name:'old'}];
+  const dir=await fixture(t,old);
+  const before=await fs.readFile(path.join(dir,'metrics.json'),'utf8');
+  await assert.rejects(run({dataDir:dir,now,request:fakeApi({failSearch:true,failMetrics:true})}),/no search or metric updates succeeded/);
+  const data=await load(dir,'discovered.json');
+  assert.deepEqual(data.candidates,old);
+  assert.equal(data.scannedAt,'2026-10-01T00:00:00Z');
+  assert.equal(data.attemptedAt,now);
+  assert.equal(data.status,'failed');
+  assert.equal(await fs.readFile(path.join(dir,'metrics.json'),'utf8'),before);
+});
+test('partial search and metric failures are recorded without replacing old metrics',async t=>{
+  const dir=await fixture(t);
+  await run({dataDir:dir,now,request:fakeApi({failSearch:true})});
+  let data=await load(dir,'discovered.json');
+  assert.equal(data.status,'partial'); assert.equal(data.searchFailures,5);
+  assert.equal(data.scannedAt,'2026-10-01T00:00:00Z');
+  assert.equal((await load(dir,'metrics.json')).repos['known/browser'].updatedAt,now);
+  await run({dataDir:dir,now,request:fakeApi({failCommits:true})});
+  data=await load(dir,'discovered.json');
+  assert.equal(data.status,'partial'); assert.equal(data.metricFailures,1);
+  assert.equal((await load(dir,'metrics.json')).repos['known/browser'].updatedAt,now);
+});
+test('active count excludes absent repositories and freshness is per repository',()=>{
+  const date=Date.parse(now);
+  const metrics={a:{lastPush:'2026-11-01T00:00:00Z',updatedAt:now},b:{lastPush:'2026-11-02T00:00:00Z'},c:{lastPush:'2026-01-01T00:00:00Z'}};
+  assert.equal(countActiveProjects([{repo:'a'},{repo:'a'},{repo:'c'}],metrics,date),1);
+  assert.equal(metricFreshness(metrics.a,date),'fresh');
+  assert.equal(metricFreshness(metrics.b,date),'unknown');
+  assert.equal(metricFreshness({updatedAt:'2026-10-01T00:00:00Z'},date),'stale');
+});

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="description" content="Discover promising desktop browsers, compare updates, and keep private local reviews" />
+  <title>Browser Radar</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./theme-light.css" />
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand"><span class="logo" aria-hidden="true">◉</span><span>Browser<span class="accent">Radar</span><small data-i18n="brandSubtitle">Browser discovery</small></span></div>
+      <div class="nav-label" data-i18n="navLabel">Explore</div>
+      <nav aria-label="Categories">
+        <button class="nav active" data-view="all"><span>▦</span> <span data-i18n="navAll">All browsers</span><b id="nav-all">—</b></button>
+        <button class="nav" data-view="new"><span>✦</span> <span data-i18n="navNew">New discoveries</span><b id="nav-new">—</b></button>
+        <button class="nav" data-view="testing"><span>◷</span> <span data-i18n="navTesting">Testing</span><b id="nav-testing">—</b></button>
+        <button class="nav" data-view="checked"><span>✓</span> <span data-i18n="navChecked">Reviewed</span><b id="nav-checked">—</b></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <span class="tiny-title" data-i18n="approachTitle">Our approach</span>
+        <p data-i18n="approachText">Fewer random forks. More evidence, hands-on experience, and security updates.</p>
+        <a href="https://github.com/igorsyrbu/awesome-arc-alternatives" target="_blank" rel="noopener noreferrer" data-i18n="sourceCatalog">Original catalog inspiration ↗</a>
+      </div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <span class="eyebrow" data-i18n="lab">BROWSER DISCOVERY / macOS</span>
+        <div class="top-actions">
+          <span id="scan-time" aria-live="polite">No scan has run yet</span>
+          <label class="language-control" for="language"><span class="sr-only">Language</span><select id="language" aria-label="Language"><option value="en">EN</option><option value="ru">RU</option></select></label>
+          <button id="import-btn" class="button secondary" type="button" disabled data-i18n="import">Import reviews</button>
+          <input id="import-file" type="file" accept=".json,application/json" hidden />
+          <button id="export-btn" class="button secondary" type="button" data-i18n-title="exportTitle" title="Download your local reviews as JSON" data-i18n="export">Export reviews</button>
+        </div>
+      </header>
+      <div class="main-wrap">
+        <div class="hero">
+          <div><div class="eyebrow"><span class="live-dot"></span><span data-i18n="eyebrow">BROWSER DISCOVERY</span></div><h1><span data-i18n="heroTitle">Choose thoughtfully</span><span class="accent">.</span></h1><p data-i18n="heroCopy">New browsers appear all the time. Explore promising projects, track updates, and make up your own mind.</p></div>
+          <div class="hero-badge"><span class="number" id="total-count">—</span><span data-i18n="inCatalog">in catalog</span></div>
+        </div>
+        <section class="stats" aria-label="Statistics">
+          <div class="stat"><span data-i18n="newCandidates">New candidates</span><strong id="stat-new">—</strong><small data-i18n="notReviewed">not reviewed yet</small></div>
+          <div class="stat"><span data-i18n="inTesting">In testing</span><strong id="stat-testing">—</strong><small data-i18n="experience">personal observations</small></div>
+          <div class="stat"><span data-i18n="reviewed">Reviewed</span><strong id="stat-checked">—</strong><small data-i18n="inclRejected">including rejected</small></div>
+          <div class="stat"><span data-i18n="activeProjects">Active projects</span><strong id="stat-active">—</strong><small data-i18n="githubMetrics">from latest GitHub scan</small></div>
+        </section>
+        <section class="results" aria-labelledby="results-title">
+          <div class="results-head"><div><h2 id="results-title" data-i18n="catalog">Catalog</h2><p id="results-count">Loading...</p></div><div class="hint" id="local-hint" data-i18n="localOnly">Reviews are stored in this browser only</div></div>
+          <div class="filters">
+            <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Name, engine, repository, notes..." data-i18n-placeholder="searchPlaceholder" autocomplete="off" aria-label="Search browsers" data-i18n-aria-label="searchLabel" /></label>
+            <select id="engine" aria-label="Engine filter"><option value="all" data-i18n="engines">All engines</option><option value="Gecko">Gecko</option><option value="Chromium">Chromium</option><option value="WebKit">WebKit</option></select>
+            <select id="sort" aria-label="Sort"><option value="priority" data-i18n="sortPriority">Curated first</option><option value="updated" data-i18n="sortUpdated">Recently updated</option><option value="name" data-i18n="sortName">Name A-Z</option></select>
+          </div>
+          <div id="cards" class="cards" aria-live="polite"></div>
+          <div id="empty" class="empty" hidden data-i18n="empty">No matches. Try another filter.</div>
+        </section>
+        <footer><span data-i18n="footerLeft">Browser Radar · Static site · No analytics or trackers</span><span data-i18n="footerRight">GitHub activity is a signal, not a security guarantee</span></footer>
+      </div>
+    </main>
+  </div>
+  <dialog id="import-dialog" aria-labelledby="import-title">
+    <div class="dialog-head"><div><span class="eyebrow" data-i18n="importEyebrow">PRIVATE REVIEWS</span><h2 id="import-title" data-i18n="importTitle">Import reviews</h2></div><button type="button" id="import-close" class="icon-btn" aria-label="Close" data-i18n-aria-label="close">×</button></div>
+    <p id="import-error" role="alert" hidden></p>
+    <div id="import-preview" hidden>
+      <p id="import-counts"></p>
+      <p data-i18n="importBackupCopy">You can download a backup before importing.</p>
+      <button type="button" id="import-backup" class="button secondary" data-i18n="importBackup">Export backup</button>
+      <div id="import-conflicts" hidden>
+        <p data-i18n="conflictTitle">When reviews conflict:</p>
+        <label><input type="radio" name="import-policy" value="keep" checked /> <span data-i18n="conflictKeep">Keep existing reviews</span></label><br />
+        <label><input type="radio" name="import-policy" value="replace" /> <span data-i18n="conflictReplace">Use imported reviews</span></label>
+      </div>
+      <p data-i18n="unknownSaved">Reviews of browsers not in the catalog will also be preserved.</p>
+      <div class="dialog-footer"><button type="button" id="import-cancel" class="button secondary" data-i18n="cancel">Cancel</button><button type="button" id="import-apply" class="button primary" data-i18n="applyImport">Import reviews</button></div>
+    </div>
+  </dialog>
+  <dialog id="review-dialog">
+    <form method="dialog" id="review-form">
+      <div class="dialog-head"><div><span class="eyebrow" data-i18n="reviewEyebrow">YOUR REVIEW</span><h2 id="dialog-name">Browser</h2></div><button class="icon-btn" value="cancel" aria-label="Close" data-i18n-aria-label="close">×</button></div>
+      <label for="review-status" data-i18n="reviewStatus">Status</label>
+      <select id="review-status" required></select>
+      <label for="review-note" data-i18n="reviewWhy">Your notes</label>
+      <textarea id="review-note" rows="5" maxlength="1200" placeholder="What worked, what didn't, and why?" data-i18n-placeholder="reviewPlaceholder"></textarea>
+      <div class="dialog-footer"><button class="button secondary" value="cancel" data-i18n="cancel">Cancel</button><button class="button primary" id="save-review" value="save" data-i18n="saveLocal">Save to this browser</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

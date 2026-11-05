@@ -1,0 +1,190 @@
+{
+  "scannedAt": "2026-11-05T11:29:53.058Z",
+  "repos": {
+    "zen-browser/desktop": {
+      "stars": 45579,
+      "lastPush": "2026-11-05T00:32:57Z",
+      "archived": false,
+      "latestRelease": "1.24b",
+      "lastReleaseAt": "2026-10-29T21:28:59Z",
+      "activeAuthors90d": 32,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "imputnet/helium": {
+      "stars": 22384,
+      "lastPush": "2026-11-05T09:07:33Z",
+      "archived": false,
+      "latestRelease": "0.21.1",
+      "lastReleaseAt": "2026-11-04T22:17:15Z",
+      "activeAuthors90d": 7,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "mantrakp04/ardia": {
+      "stars": 1173,
+      "lastPush": "2026-11-05T04:32:15Z",
+      "archived": false,
+      "latestRelease": "v0.2.44",
+      "lastReleaseAt": "2026-11-04T20:14:24Z",
+      "activeAuthors90d": 3,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "pauljoda/Crest": {
+      "stars": 1102,
+      "lastPush": "2026-11-05T04:07:25Z",
+      "archived": false,
+      "latestRelease": "v0.8.50",
+      "lastReleaseAt": "2026-10-23T00:07:44Z",
+      "activeAuthors90d": 17,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "lucianodiisouza/flecha-browser": {
+      "stars": 119,
+      "lastPush": "2026-11-02T13:26:03Z",
+      "archived": false,
+      "latestRelease": "v0.1.2",
+      "lastReleaseAt": "2026-11-02T07:18:11Z",
+      "activeAuthors90d": 4,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "VictorKildahl/cra": {
+      "stars": 143,
+      "lastPush": "2026-11-05T09:49:44Z",
+      "archived": false,
+      "latestRelease": "v0.1.30",
+      "lastReleaseAt": "2026-11-04T16:48:05Z",
+      "activeAuthors90d": 4,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "driceroland/Search": {
+      "stars": 2820,
+      "lastPush": "2026-11-04T18:38:33Z",
+      "archived": false,
+      "latestRelease": "v1.0.9",
+      "lastReleaseAt": "2026-11-04T18:38:12Z",
+      "activeAuthors90d": 19,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "bnfy/blanc": {
+      "stars": 141,
+      "lastPush": "2026-11-05T01:02:40Z",
+      "archived": false,
+      "latestRelease": "v1.46.0",
+      "lastReleaseAt": "2026-11-03T02:57:32Z",
+      "activeAuthors90d": 1,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "villekivela/omaweb": {
+      "stars": 10,
+      "lastPush": "2026-11-05T10:39:44Z",
+      "archived": false,
+      "latestRelease": "engine-6.11.2-16",
+      "lastReleaseAt": "2026-10-24T18:15:11Z",
+      "activeAuthors90d": 2,
+      "commitsSample": 100,
+      "commitsTruncated": true
+    },
+    "ysalitrynskyi/stedding-browser": {
+      "stars": 141,
+      "lastPush": "2026-11-05T10:35:28Z",
+      "archived": false,
+      "latestRelease": "v0.4.0-beta.10",
+      "lastReleaseAt": "2026-11-05T10:30:00Z",
+      "activeAuthors90d": 1,
+      "commitsSample": 100,
+      "commitsTruncated": true
+    },
+    "YSamed/yalqen": {
+      "stars": 36,
+      "lastPush": "2026-11-05T10:32:49Z",
+      "archived": false,
+      "latestRelease": "v0.3.86",
+      "lastReleaseAt": "2026-11-05T10:37:31Z",
+      "activeAuthors90d": 1,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "OMS-Interactive/Aura-Browser": {
+      "stars": 0,
+      "lastPush": "2026-11-05T10:08:14Z",
+      "archived": false,
+      "latestRelease": "firstrelease",
+      "lastReleaseAt": "2026-11-05T09:43:59Z",
+      "activeAuthors90d": 1,
+      "commitsSample": 3,
+      "commitsTruncated": false,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "WalkerSucksAtCode/Paddle": {
+      "stars": 0,
+      "lastPush": "2026-11-05T11:24:46Z",
+      "archived": false,
+      "latestRelease": null,
+      "lastReleaseAt": null,
+      "activeAuthors90d": 1,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "wsagency/wsurf": {
+      "stars": 0,
+      "lastPush": "2026-11-05T10:44:37Z",
+      "archived": false,
+      "latestRelease": null,
+      "lastReleaseAt": null,
+      "activeAuthors90d": 2,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "Chaitanya045/koan": {
+      "stars": 2,
+      "lastPush": "2026-11-05T11:05:43Z",
+      "archived": false,
+      "latestRelease": null,
+      "lastReleaseAt": null,
+      "activeAuthors90d": 1,
+      "commitsSample": 96,
+      "commitsTruncated": false,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "St0neWan9/open-arc-browser": {
+      "stars": 0,
+      "lastPush": "2026-11-05T11:27:10Z",
+      "archived": false,
+      "latestRelease": "v0.2.1",
+      "lastReleaseAt": "2026-11-05T07:12:39Z",
+      "activeAuthors90d": 1,
+      "commitsSample": 100,
+      "commitsTruncated": true,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    },
+    "timwuhaotian/tap": {
+      "stars": 2,
+      "lastPush": "2026-11-05T11:06:46Z",
+      "archived": false,
+      "latestRelease": null,
+      "lastReleaseAt": null,
+      "activeAuthors90d": 1,
+      "commitsSample": 98,
+      "commitsTruncated": false,
+      "updatedAt": "2026-11-05T11:29:53.058Z"
+    }
+  }
+}
