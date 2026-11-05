@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-11-05T17:48:22.315Z",
+  "scannedAt": "2026-11-05T19:12:04.444Z",
   "queries": [
     "\"arc browser\" alternative in:name,description,readme archived:false",
     "\"vertical tabs\" browser macos in:description,readme archived:false",
@@ -140,9 +140,39 @@
       "repo": "JamiroFerrara/tbrowser",
       "summary": "Minimal Chromium browser: Chrome extensions, DevTools, vim-style command bar",
       "discoveredAt": "2026-11-05T17:48:22.315Z"
+    },
+    {
+      "id": "solidcarbon/Aphrodite",
+      "name": "Aphrodite",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": "https://github.com/solidcarbon/Aphrodite/releases/latest",
+      "repo": "solidcarbon/Aphrodite",
+      "summary": "A calm, private browser for Windows. No accounts, no telemetry, no ads.",
+      "discoveredAt": "2026-11-05T19:12:04.444Z"
+    },
+    {
+      "id": "notnaki/vane",
+      "name": "vane",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": "https://notnaki.github.io/vane/",
+      "repo": "notnaki/vane",
+      "summary": "Open-source native macOS browser with sidebar tabs, Spaces, Split View, and Little Vane. Built with Swift and WebKit; early development for macOS 26+.",
+      "discoveredAt": "2026-11-05T19:12:04.444Z"
+    },
+    {
+      "id": "aeonfun/opendia",
+      "name": "opendia",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": "https://www.aeon.fun",
+      "repo": "aeonfun/opendia",
+      "summary": "Connect your browser to AI models. Just use Dia on Chrome, Arc or Firefox.",
+      "discoveredAt": "2026-11-05T19:12:04.444Z"
     }
   ],
-  "attemptedAt": "2026-11-05T17:48:22.315Z",
+  "attemptedAt": "2026-11-05T19:12:04.444Z",
   "status": "success",
   "searchFailures": 0,
   "metricFailures": 0
