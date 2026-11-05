@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "attemptedAt": "2026-11-05T19:11:52.670Z",
-  "status": "partial",
+  "attemptedAt": "2026-11-05T19:13:42.933Z",
+  "status": "success",
   "sources": {
     "official/dia": {
       "sourceUrl": "https://www.diabrowser.com/changelog",
-      "checkedAt": null,
+      "checkedAt": "2026-11-05T19:13:42.933Z",
       "releases": {
         "macOS": {
-          "version": "1.55.0",
-          "publishedAt": "2026-10-29",
-          "url": "https://www.diabrowser.com/changelog/mac/1-55-0",
-          "origin": "official-manual"
+          "version": "1.56.0",
+          "publishedAt": "2026-11-05",
+          "url": "https://www.diabrowser.com/changelog/mac/1-56-0",
+          "origin": "official-auto"
         },
         "Windows": {
-          "version": "1.4.0",
-          "publishedAt": "2026-10-29",
-          "url": "https://www.diabrowser.com/changelog/windows/1-4-0",
-          "origin": "official-manual"
+          "version": "1.5.0",
+          "publishedAt": "2026-11-05",
+          "url": "https://www.diabrowser.com/changelog/windows/1-5-0",
+          "origin": "official-auto"
         }
       }
     },
     "official/orion": {
       "sourceUrl": "https://browser.kagi.com/updates/orion-release-notes.html",
-      "checkedAt": "2026-11-05T19:11:52.670Z",
+      "checkedAt": "2026-11-05T19:13:42.933Z",
       "releases": {
         "macOS": {
           "version": "1.1",
@@ -39,6 +39,6 @@
       "releases": {}
     }
   },
-  "sourceSuccesses": 1,
-  "sourceFailures": 2
+  "sourceSuccesses": 3,
+  "sourceFailures": 0
 }
