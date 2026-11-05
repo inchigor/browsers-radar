@@ -1,11 +1,14 @@
 {
-  "scannedAt": "2026-11-05T11:29:53.058Z",
+  "scannedAt": "2026-11-05T17:44:08.744Z",
   "queries": [
     "\"arc browser\" alternative in:name,description,readme archived:false",
     "\"vertical tabs\" browser macos in:description,readme archived:false",
+    "\"vertical tabs\" browser windows in:description,readme archived:false",
+    "\"vertical tabs\" browser linux in:description,readme archived:false",
     "browser sidebar swift macos in:description,readme archived:false",
     "browser webkit macos in:description,readme archived:false",
-    "\"chromium browser\" macos in:description,readme archived:false"
+    "\"chromium browser\" macos in:description,readme archived:false",
+    "\"chromium browser\" windows linux in:description,readme archived:false"
   ],
   "candidates": [
     {
@@ -87,9 +90,59 @@
       "repo": "timwuhaotian/tap",
       "summary": "A small, fast macOS browser on WebKit, written in Rust. A port of Search.",
       "discoveredAt": "2026-11-05T11:07:48.887Z"
+    },
+    {
+      "id": "enhansome/enhansome-desktop-web-browsers",
+      "name": "enhansome-desktop-web-browsers",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "enhansome/enhansome-desktop-web-browsers",
+      "summary": "New GitHub discovery. Platform, releases and extensions need independent verification.",
+      "discoveredAt": "2026-11-05T17:44:08.744Z"
+    },
+    {
+      "id": "frknue/soprano_web",
+      "name": "soprano_web",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "frknue/soprano_web",
+      "summary": "A native WebKit browser for macOS, in the Soprano family.",
+      "discoveredAt": "2026-11-05T17:44:08.744Z"
+    },
+    {
+      "id": "unitybtw/nova-browser",
+      "name": "nova-browser",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": "https://nova-browser.vercel.app",
+      "repo": "unitybtw/nova-browser",
+      "summary": "An open source browser built with React and Electron",
+      "discoveredAt": "2026-11-05T17:44:08.744Z"
+    },
+    {
+      "id": "arcusis/shaar",
+      "name": "shaar",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "arcusis/shaar",
+      "summary": "Shaar, a native macOS browser built on Chromium.",
+      "discoveredAt": "2026-11-05T17:44:08.744Z"
+    },
+    {
+      "id": "krystianslowik/arkt",
+      "name": "arkt",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "krystianslowik/arkt",
+      "summary": "A native macOS browser that rebuilds Arc's experience on its own Chromium framework",
+      "discoveredAt": "2026-11-05T17:44:08.744Z"
     }
   ],
-  "attemptedAt": "2026-11-05T11:29:53.058Z",
+  "attemptedAt": "2026-11-05T17:44:08.744Z",
   "status": "success",
   "searchFailures": 0,
   "metricFailures": 0
