@@ -39,7 +39,7 @@ export function parseDia(html,platform){
   const text=htmlText(html);
   const dates=[...text.matchAll(new RegExp("\\b("+MONTH+")\\s+(\\d{1,2}),\\s*(20\\d{2})\\b","gi"))];
   const target=platform==="macOS"?"Mac":"Windows";
-  const versionRe=new RegExp("\\b"+target+"\\s+v(\\d+\\.\\d+(?:\\.\\d+){0,2}(?:[-.](?:alpha|beta|rc)\\.?\\d+)?)\\b","i");
+  const versionRe=new RegExp("\\b"+target+"\\s+v\\s*(\\d+\\.\\d+(?:\\.\\d+){0,2}(?:[-.](?:alpha|beta|rc)\\.?\\d+)?)\\b","i");
   let best=null;
   for(let i=0;i<dates.length;i++){
     const d=dates[i],publishedAt=isoDate(d[1],d[2],d[3]);

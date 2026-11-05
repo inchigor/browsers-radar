@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import fs from "node:fs/promises";
 import {htmlText,parseDia,parseOrion,run} from "./scan-official.mjs";
-const dia='<html><h2>October 29, 2026</h2><p>Mac v1.55.0</p><h2>October 22, 2026</h2><p>Mac v1.54.0</p><h2>October 29, 2026</h2><p>Windows v1.4.0</p><script>November 30, 2029 Windows v999.9</script></html>';
+const dia='<html><h2>October 29, 2026</h2><p>Mac v 1.55.0</p><h2>October 22, 2026</h2><p>Mac v1.54.0</p><h2>October 29, 2026</h2><p>Windows v 1.4.0</p><script>November 30, 2029 Windows v999.9</script></html>';
 const orion='<html><h1>Orion Browser macOS Release Notes</h1><h2>Orion 1.1 ✴︎ June 23, 2026</h2><h2>Orion RC 131.2 March 3, 2025</h2><h2>Orion 1.0 ✴︎ January 12, 2025</h2></html>';
 test("parse official releases per platform",()=>{
  assert.deepEqual(parseDia(dia,"macOS"),{version:"1.55.0",publishedAt:"2026-10-29"});
@@ -58,4 +58,11 @@ test("older and future releases never overwrite newer observations",async t=>{
  await assert.rejects(run({dataDir,now:"2026-11-05T18:00:00Z",sources,load:async()=>"<h2>December 1, 2026</h2><p>Mac v100.0</p>"}));
  const s=JSON.parse(await fs.readFile(path.join(dataDir,"official.json"),"utf8"));
  assert.equal(s.sources["official/dia"].releases.macOS.version,"1.54.0");
+});
+
+test("Dia official pages can separate v and version with whitespace",()=>{
+  const html='<h2>November 5, 2026</h2><p>More personal, more polished</p><p>Mac v 1.56.0</p><h2>October 29, 2026</h2><p>Mac v 1.55.0</p>';
+  assert.deepEqual(parseDia(html,"macOS"),{version:"1.56.0",publishedAt:"2026-11-05"});
+  const win='<h2>November 5, 2026</h2><h3>Windows v 1.5.0</h3>';
+  assert.deepEqual(parseDia(win,"Windows"),{version:"1.5.0",publishedAt:"2026-11-05"});
 });
