@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {looksRelevant,normalizeCandidate,distinctContributors} from './scan.mjs';
+import {looksRelevant,normalizeCandidate,distinctContributors,summarizeReleases} from './scan.mjs';
 
 test('reject unrelated GitHub resources and forks',()=>{
   assert.equal(looksRelevant({name:'awesome-browser-list',description:'browser links',full_name:'x/awesome-browser-list'}),false);
@@ -49,7 +49,7 @@ function fakeApi({items=[],failSearch=false,failMetrics=false,failCommits=false}
   return async uri=>{
     if(uri.startsWith('/search/')) {if(failSearch)throw new Error('offline');return {items};}
     if(failMetrics)throw new Error('offline');
-    if(uri.includes('/releases/latest'))throw new Error('GitHub API 404 /releases/latest');
+    if(uri.includes('/releases?'))return [];
     if(uri.includes('/commits?')){if(failCommits)throw new Error('offline');return [];}
     return {stargazers_count:10,pushed_at:'2026-11-01T00:00:00Z'};
   };
@@ -80,7 +80,7 @@ test('partial search and metric failures are recorded without replacing old metr
   const dir=await fixture(t);
   await run({dataDir:dir,now,request:fakeApi({failSearch:true})});
   let data=await load(dir,'discovered.json');
-  assert.equal(data.status,'partial'); assert.equal(data.searchFailures,5);
+  assert.equal(data.status,'partial'); assert.equal(data.searchFailures,8);
   assert.equal(data.scannedAt,'2026-10-01T00:00:00Z');
   assert.equal((await load(dir,'metrics.json')).repos['known/browser'].updatedAt,now);
   await run({dataDir:dir,now,request:fakeApi({failCommits:true})});
@@ -95,4 +95,26 @@ test('active count excludes absent repositories and freshness is per repository'
   assert.equal(metricFreshness(metrics.a,date),'fresh');
   assert.equal(metricFreshness(metrics.b,date),'unknown');
   assert.equal(metricFreshness({updatedAt:'2026-10-01T00:00:00Z'},date),'stale');
+});
+
+test('release history distinguishes first public release from latest non-prerelease',()=>{
+  const data=summarizeReleases([
+    {tag_name:'v2.0.0-beta.1',published_at:'2026-11-05T00:00:00Z',prerelease:true,draft:false},
+    {tag_name:'v1.5.0',published_at:'2026-10-20T00:00:00Z',prerelease:false,draft:false},
+    {tag_name:'v1.0.0',published_at:'2025-09-01T00:00:00Z',prerelease:false,draft:false},
+    {tag_name:'v3.0.0',published_at:'2026-11-06T00:00:00Z',prerelease:false,draft:true}
+  ],true);
+  assert.equal(data.latestRelease,'v2.0.0-beta.1');
+  assert.equal(data.latestStableTag,'v1.5.0');
+  assert.equal(data.latestStableAt,'2026-10-20T00:00:00Z');
+  assert.equal(data.firstReleaseAt,'2025-09-01T00:00:00Z');
+  assert.equal(summarizeReleases([{tag_name:'v1.0.0',published_at:'2025-01-01T00:00:00Z'}],false).firstReleaseAt,null);
+  assert.equal(summarizeReleases([],true).firstReleaseAt,null);
+});
+test('prerelease-tag guard handles mislabelled beta releases',()=>{
+  const data=summarizeReleases([
+    {tag_name:'v3.0.0-rc.1',published_at:'2026-11-04T00:00:00Z',prerelease:false},
+    {tag_name:'v2.9.0',published_at:'2026-10-01T00:00:00Z',prerelease:false}
+  ],true);
+  assert.equal(data.latestStableTag,'v2.9.0');
 });

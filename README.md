@@ -8,7 +8,10 @@ A lightweight, public, bilingual (English/Russian) discovery dashboard for deskt
 
 - Curated browser listings, including projects for macOS, Windows and Linux.
 - Weekly GitHub discovery of **unverified candidates** and refresh of project activity metrics.
-- Filters by engine, text search and sorting.
+- Desktop platform filters: **macOS, Windows, Linux**, plus engine search.
+- Filters for observed GitHub contributors, license (SPDX), first public release date and most recent non-prerelease release.
+- Sort by GitHub stars, last code push, observed contributors, and release dates.
+- Text search and separate personal review statuses.
 - **EN / RU** switcher; the language is saved in this browser.
 - Personal status and notes for each browser, stored **only in the visitor's browser**.
 - JSON import/export for manual backup and transfer between devices.
@@ -22,7 +25,20 @@ Your notes and classifications use `localStorage` under the key `browsers-radar-
 
 **Caution:** Clearing site data, using private browsing or switching browsers/devices can remove or separate your reviews. Use **Export reviews** regularly and keep the JSON backups somewhere private. **Import reviews** previews new, identical and conflicting entries, supports keeping or replacing conflicts, and preserves entries for browsers not currently in the catalog. Don't commit exported review files to public repositories.
 
-### Language
+### Reading the project metrics
+
+- **GitHub stars** are the repository's star count at the last successful scan.
+- **Last updated** means `pushed_at` from GitHub, a code push - **not** a published release.
+- **Contributors (90d)** means distinct author identities in **up to the first 100 commits in the previous 90 days** (obvious bots excluded). A `+` indicates that the 100-commit sample limit was reached. This is **not total team size**.
+- **First release** means the earliest **published GitHub Release**, which can be an early prerelease. If history has more than 600 Releases or the API is incomplete, the date stays unknown.
+- **Latest non-prerelease** means the newest published GitHub Release GitHub does not mark as prerelease and whose tag does not clearly identify beta/alpha/RC/nightly. It is not a guarantee of a production-grade stable build.
+- **License** is the SPDX identifier exposed by GitHub's repository API. If missing or `NOASSERTION`, it is displayed as unknown. It is not a legal audit.
+- For platforms, **unverified** projects are excluded from platform-specific filters rather than guessed from their repository description.
+- Blank release dates are **unknown**, never treated as zero or as the date the repository was created.
+
+The scanner searches macOS, Windows and Linux projects. Newly found candidates are unverified until manually reviewed.
+
+## Language
 
 English is the default unless your browser language starts with `ru`; you can switch with the **EN / RU** selector. The selection persists on the current device. Curated descriptions are bilingual; descriptions retrieved from third-party GitHub repositories are shown as published, usually in English.
 
@@ -36,7 +52,7 @@ python3 -m http.server 8080 --bind 127.0.0.1 --directory site
 
 Open http://127.0.0.1:8080/ . Opening `site/index.html` via `file://` will not work because the page fetches JSON.
 
-Run the tests using Node.js 22 or later:
+Run the tests using Node.js 22 or later (catalog, scanner, translations and privacy):
 
 ```bash
 node --test scripts/*.test.mjs
@@ -53,7 +69,7 @@ The scanner only writes `site/data/discovered.json` and `site/data/metrics.json`
 ## GitHub Actions and Pages
 
 - **Publish Browser Radar** deploys the contents of `site/` using GitHub Pages on commits that change the site and through manual dispatch. GitHub repository **Settings → Pages → Build and deployment → Source: GitHub Actions** must be selected.
-- **Browser Radar - weekly discovery** runs every Monday at **08:17 UTC** and can be triggered manually. It needs GitHub Actions permission to commit its resulting public discovery and metrics JSON.
+- **Browser Radar - weekly discovery** runs every Monday at **08:17 UTC**, after scanner/catalog changes, and can be triggered manually. It needs GitHub Actions permission to commit its resulting public discovery and metrics JSON.
 - The deployment checks Node tests and asserts that no reviews JSON was added to the public website.
 
 GitHub API searches are heuristic. A new candidate is not a verified working browser. Stars, commit activity and contributor counts do not prove a project is safe or actively maintained, and the scan may miss projects or yield false positives. The user chooses what to install; this project never downloads or runs browser installers.
@@ -72,4 +88,4 @@ Browser Radar - открытый каталог браузеров с автом
 
 **Личные оценки и заметки хранятся только в вашем браузере** (`localStorage`). В публичный GitHub они не отправляются, не синхронизируются и не входят в файлы сайта. При очистке данных сайта оценки могут исчезнуть - используйте кнопки **«Экспорт оценок»** и **«Импорт оценок»**. Исходный каталог общий, но все личные статусы независимы для каждого посетителя.
 
-Новые находки автоматического сканера требуют проверки: появление в каталоге не означает рекомендацию устанавливать приложение.
+Новые находки автоматического сканера требуют проверки: появление в каталоге не означает рекомендацию устанавливать приложение. Фильтры поддерживают macOS, Windows и Linux, движок, число наблюдаемых авторов, лицензию и даты первого и последнего стабильного релиза. Последнее обновление означает push в GitHub, а число авторов - ограниченную выборку коммитов за 90 дней.

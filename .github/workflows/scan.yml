@@ -1,5 +1,12 @@
 name: Browser Radar - weekly discovery
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/scan.mjs'
+      - 'scripts/scan.test.mjs'
+      - 'site/data/browsers.json'
+      - '.github/workflows/scan.yml'
   schedule:
     - cron: '17 8 * * 1'
   workflow_dispatch:

@@ -19,16 +19,6 @@
       "discoveredAt": "2026-11-05T10:47:54.031Z"
     },
     {
-      "id": "ysalitrynskyi/stedding-browser",
-      "name": "stedding-browser",
-      "engine": "Unverified",
-      "platform": "Not verified",
-      "url": "https://stedding.dev",
-      "repo": "ysalitrynskyi/stedding-browser",
-      "summary": "Open-source Arc-style browser built on Chromium: sidebar with vertical tabs, Spaces, folders, pinned tabs, a command bar, one-click import from Arc. macOS and Windows (Linux is coming soon). No telemetry.",
-      "discoveredAt": "2026-11-05T10:47:54.031Z"
-    },
-    {
       "id": "YSamed/yalqen",
       "name": "yalqen",
       "engine": "Unverified",

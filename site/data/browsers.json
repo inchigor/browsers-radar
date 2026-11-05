@@ -78,5 +78,35 @@
     "repo": "bnfy/blanc",
     "summary": "Chromium/Electron browser with vertical tabs.",
     "summaryRu": "Браузер на базе Chromium и Electron с вертикальными вкладками."
+  },
+  {
+    "id": "MultiboxLabs/flow-browser",
+    "name": "Flow Browser",
+    "engine": "Chromium (Electron)",
+    "platform": "macOS, Windows, Linux",
+    "url": "https://flow-browser.com/",
+    "repo": "MultiboxLabs/flow-browser",
+    "summary": "Open-source Chromium/Electron browser with a compact design and Chrome extension support.",
+    "summaryRu": "Открытый браузер на Chromium/Electron с компактным интерфейсом и поддержкой расширений Chrome."
+  },
+  {
+    "id": "zephium-browser/Zephium",
+    "name": "Zephium",
+    "engine": "WebKit + Chromium (WebView2)",
+    "platform": "macOS, Windows",
+    "url": "https://zephium.app/",
+    "repo": "zephium-browser/Zephium",
+    "summary": "Native Rust browser with WebKit on macOS and WebView2 on Windows. Linux builds are not shipped yet.",
+    "summaryRu": "Нативный браузер на Rust: WebKit для macOS и WebView2 для Windows. Сборок Linux пока нет."
+  },
+  {
+    "id": "ysalitrynskyi/stedding-browser",
+    "name": "Stedding",
+    "engine": "Chromium",
+    "platform": "macOS, Windows",
+    "url": "https://stedding.dev/",
+    "repo": "ysalitrynskyi/stedding-browser",
+    "summary": "Open-source Arc-style browser with vertical tabs, Spaces, pinned tabs and folders.",
+    "summaryRu": "Открытый браузер в стиле Arc с вертикальными вкладками, Spaces, закреплёнными вкладками и папками."
   }
 ]

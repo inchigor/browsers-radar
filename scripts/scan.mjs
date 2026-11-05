@@ -12,9 +12,12 @@ const MAX_NEW_PER_RUN = 8;
 const QUERIES = [
   '"arc browser" alternative in:name,description,readme archived:false',
   '"vertical tabs" browser macos in:description,readme archived:false',
+  '"vertical tabs" browser windows in:description,readme archived:false',
+  '"vertical tabs" browser linux in:description,readme archived:false',
   'browser sidebar swift macos in:description,readme archived:false',
   'browser webkit macos in:description,readme archived:false',
-  '"chromium browser" macos in:description,readme archived:false'
+  '"chromium browser" macos in:description,readme archived:false',
+  '"chromium browser" windows linux in:description,readme archived:false'
 ];
 
 function isJunkName(name) {
@@ -30,7 +33,7 @@ export function looksRelevant(repo) {
   // Exclude tools that only integrate with existing browsers.
   if (/(terminal|input.method|(?:^|[^a-z])ime(?:[^a-z]|$)|browser.?cli|cross.browser|browser per tab|browser extension|reuse existing browser tabs|no embedded browser|web automation|browser agent)/i.test(text)) return false;
   // Relevance is only a candidate heuristic, not proof of platform compatibility.
-  return /(arc|vertical|sidebar|swift|macos|mac os|chromium|firefox|webkit|gecko)/i.test(text);
+  return /(arc|vertical|sidebar|swift|macos|mac os|windows|linux|desktop|electron|chromium|firefox|webkit|gecko)/i.test(text);
 }
 export function normalizeCandidate(repo, now) {
   return {
@@ -60,17 +63,52 @@ async function api(uri){
 }
 async function read(dataDir,file){return JSON.parse(await fs.readFile(path.join(dataDir,file),"utf8"));}
 async function write(dataDir,file,data){await fs.writeFile(path.join(dataDir,file),JSON.stringify(data,null,2)+"\n","utf8");}
+// First release = earliest published GitHub Release, not first commit/tag.
+// If pagination is incomplete, firstReleaseAt stays null rather than guessing.
+const MAX_RELEASE_PAGES = 6;
+export function summarizeReleases(releases, complete) {
+  const published=releases.filter(x=>!x.draft && x.published_at && !Number.isNaN(Date.parse(x.published_at)));
+  published.sort((a,b)=>Date.parse(b.published_at)-Date.parse(a.published_at));
+  // GitHub's prerelease flag is authoritative; tag markers are a conservative extra guard.
+  const stable=published.filter(x=>!x.prerelease && !/(?:^|[.-])(alpha|beta|rc|dev|nightly|preview)(?:[.-]|\d|$)/i.test(x.tag_name||""));
+  return {
+    latestRelease:published[0]?.tag_name||null,
+    lastReleaseAt:published[0]?.published_at||null,
+    latestStableTag:stable[0]?.tag_name||null,
+    latestStableAt:stable[0]?.published_at||null,
+    firstReleaseAt:complete && published.length?published.at(-1).published_at:null,
+    releaseHistoryComplete:complete
+  };
+}
 async function getMetrics(repo,since,request){
   const p=encodeURIComponent(repo).replace("%2F","/");
-  const basic=await request(`/repos/${p}`);
-  const metric={stars:basic.stargazers_count||0,lastPush:basic.pushed_at||null,archived:!!basic.archived,latestRelease:null,lastReleaseAt:null,activeAuthors90d:0,commitsSample:0,commitsTruncated:false};
-  try {const release=await request(`/repos/${p}/releases/latest`);metric.latestRelease=release.tag_name||null;metric.lastReleaseAt=release.published_at||null;}catch(e){if(!/GitHub API 404(?:\s|$)/.test(e.message))throw e;}
-  const commits=await request(`/repos/${p}/commits?since=${encodeURIComponent(since)}&per_page=100`);
+  const basic=await request("/repos/"+p);
+  const metric={
+    stars:basic.stargazers_count??0,lastPush:basic.pushed_at||null,
+    archived:!!basic.archived,githubCreatedAt:basic.created_at||null,
+    licenseSpdx:basic.license?.spdx_id||null,
+    latestRelease:null,lastReleaseAt:null,latestStableTag:null,latestStableAt:null,
+    firstReleaseAt:null,releaseHistoryComplete:false,
+    activeAuthors90d:0,commitsSample:0,commitsTruncated:false
+  };
+  const releases=[];
+  let complete=false;
+  for(let page=1;page<=MAX_RELEASE_PAGES;page++){
+    let batch;
+    try{batch=await request("/repos/"+p+"/releases?per_page=100&page="+page);}
+    catch(e){if(page===1 && /GitHub API 404(?:\s|$)/.test(e.message)){complete=true;break;}throw e;}
+    if(!Array.isArray(batch))throw new Error("Unexpected releases API response");
+    releases.push(...batch);
+    if(batch.length<100){complete=true;break;}
+  }
+  Object.assign(metric,summarizeReleases(releases,complete));
+  const commits=await request("/repos/"+p+"/commits?since="+encodeURIComponent(since)+"&per_page=100");
   metric.activeAuthors90d=distinctContributors(commits);
   metric.commitsSample=commits.length;
   metric.commitsTruncated=commits.length===100;
   return metric;
 }
+
 const repoKey = value => String(value || "").toLowerCase();
 export async function run({dataDir=DATA,request=api,now=new Date().toISOString()}={}) {
   const since=new Date(Date.parse(now)-90*86400000).toISOString();

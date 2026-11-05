@@ -53,9 +53,53 @@
           <div class="results-head"><div><h2 id="results-title" data-i18n="catalog">Catalog</h2><p id="results-count">Loading...</p></div><div class="hint" id="local-hint" data-i18n="localOnly">Reviews are stored in this browser only</div></div>
           <div class="filters">
             <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Name, engine, repository, notes..." data-i18n-placeholder="searchPlaceholder" autocomplete="off" aria-label="Search browsers" data-i18n-aria-label="searchLabel" /></label>
-            <select id="engine" aria-label="Engine filter"><option value="all" data-i18n="engines">All engines</option><option value="Gecko">Gecko</option><option value="Chromium">Chromium</option><option value="WebKit">WebKit</option></select>
-            <select id="sort" aria-label="Sort"><option value="priority" data-i18n="sortPriority">Curated first</option><option value="updated" data-i18n="sortUpdated">Recently updated</option><option value="name" data-i18n="sortName">Name A-Z</option></select>
+            <select id="platform" aria-label="Platform" data-i18n-aria-label="platformLabel">
+              <option value="all" data-i18n="platformAll">All platforms</option>
+              <option value="macOS">macOS</option><option value="Windows">Windows</option><option value="Linux">Linux</option>
+            </select>
+            <select id="engine" aria-label="Engine filter" data-i18n-aria-label="engineLabel">
+              <option value="all" data-i18n="engines">All engines</option>
+              <option value="Gecko">Gecko</option><option value="Chromium">Chromium</option><option value="WebKit">WebKit</option>
+            </select>
+            <select id="sort" aria-label="Sort" data-i18n-aria-label="sortLabel">
+              <option value="priority" data-i18n="sortPriority">Curated first</option>
+              <option value="updated" data-i18n="sortUpdated">Last updated ↓</option>
+              <option value="stars" data-i18n="sortStars">GitHub stars ↓</option>
+              <option value="contributors" data-i18n="sortContributors">Contributors ↓</option>
+              <option value="latest-stable" data-i18n="sortStable">Latest stable release ↓</option>
+              <option value="first-release-new" data-i18n="sortFirstNew">First release: newest</option>
+              <option value="first-release-old" data-i18n="sortFirstOld">First release: oldest</option>
+              <option value="name" data-i18n="sortName">Name A-Z</option>
+            </select>
           </div>
+          <div class="advanced-filters" aria-label="Additional filters" data-i18n-aria-label="advancedLabel">
+            <label class="filter-field"><span data-i18n="contributorsLabel">Contributors (90d sample)</span>
+              <select id="contributors">
+                <option value="all" data-i18n="contributorsAll">Any number</option>
+                <option value="0" data-i18n="contributorsZero">0 observed</option>
+                <option value="1" data-i18n="contributorsOne">1 observed</option>
+                <option value="2-5">2–5</option><option value="6-10">6–10</option><option value="11+">11+</option>
+              </select>
+            </label>
+            <label class="filter-field"><span data-i18n="licenseLabel">License</span>
+              <select id="license">
+                <option value="all" data-i18n="licenseAll">All licenses</option>
+                <option value="known" data-i18n="licenseKnown">Known SPDX</option>
+                <option value="unknown" data-i18n="licenseUnknown">Unknown</option>
+                <option value="MIT">MIT</option><option value="GPL">GPL / AGPL / LGPL</option>
+                <option value="MPL">MPL</option><option value="Apache">Apache</option>
+                <option value="other" data-i18n="licenseOther">Other</option>
+              </select>
+            </label>
+            <label class="filter-field"><span data-i18n="firstSinceLabel">First public release since</span>
+              <input id="first-since" type="date" aria-label="First public release since" data-i18n-aria-label="firstSinceLabel" />
+            </label>
+            <label class="filter-field"><span data-i18n="stableSinceLabel">Latest stable release since</span>
+              <input id="stable-since" type="date" aria-label="Latest stable release since" data-i18n-aria-label="stableSinceLabel" />
+            </label>
+            <button id="clear-filters" class="button secondary clear-filters" type="button" data-i18n="clearFilters">Clear filters</button>
+          </div>
+          <p class="data-explainer" data-i18n="dataExplainer">Last updated = last GitHub push. Contributors = unique authors in up to 100 commits over 90 days, not team size. Release dates come from published GitHub Releases; missing data is not estimated.</p>
           <div id="cards" class="cards" aria-live="polite"></div>
           <div id="empty" class="empty" hidden data-i18n="empty">No matches. Try another filter.</div>
         </section>

@@ -1,6 +1,7 @@
 import {countActiveProjects, metricFreshness} from "./metrics.mjs";
 import {parseReviews, compareReviews, storeImportedReviews} from "./reviews.mjs";
 import {translate, detectLanguage} from "./i18n.mjs";
+import {filterCatalog,sortCatalog,licenseName} from "./catalog.mjs";
 
 const API_ROOT = "./data/";
 // Different key from the original private site. Both GitHub Pages sites share one origin.
@@ -20,6 +21,7 @@ function stored(key) {
 }
 const state={
   browsers:[], metrics:{}, reviews:{}, view:"all", q:"", engine:"all",
+  platform:"all", contributors:"all", license:"all", firstSince:"", stableSince:"",
   sort:"priority", editing:null, scannedAt:null, scanStatus:null, loaded:false, imported:false,
   lang:detectLanguage(stored(LANGUAGE_KEY),navigator.language)
 };
@@ -88,16 +90,19 @@ function buildCard(browser) {
   const description=state.lang==="ru"?(browser.summaryRu||browser.summary):(browser.summary||browser.summaryRu);
   card.append(node("p","summary",description||t("unknownSummary")));
   const badges=node("div","metrics");
+  const pop=(key,value,muted=false)=>addMetric(badges,t(key)+": "+(value||"—"),muted);
   if(metric.stars!==undefined)addMetric(badges,"★ "+Number(metric.stars).toLocaleString(state.lang==="ru"?"ru-RU":"en-US"));
-  if(metric.lastReleaseAt)addMetric(badges,t("metricRelease")+": "+dateFmt(metric.lastReleaseAt));
-  else if(metric.lastPush)addMetric(badges,t("metricPush")+": "+dateFmt(metric.lastPush));
-  if(metric.activeAuthors90d!==undefined)addMetric(badges,t("metricAuthors")+": "+metric.activeAuthors90d+(metric.commitsTruncated?"+":""),true);
   if(Object.keys(metric).length){
+    pop("metricLicense",licenseName(metric));
+    pop("metricLastUpdated",metric.lastPush?dateFmt(metric.lastPush):null);
+    pop("metricFirstRelease",metric.firstReleaseAt?dateFmt(metric.firstReleaseAt):null);
+    pop("metricStable",metric.latestStableAt?dateFmt(metric.latestStableAt)+(metric.latestStableTag?" ("+metric.latestStableTag+")":""):null);
+    if(metric.activeAuthors90d!==undefined)pop("metricAuthors",String(metric.activeAuthors90d)+(metric.commitsTruncated?"+":""),true);
     const freshness=metricFreshness(metric);
-    if(freshness==="stale")addMetric(badges,t("metricUpdated")+": "+dateFmt(metric.updatedAt),true);
+    if(freshness==="stale")pop("metricUpdated",dateFmt(metric.updatedAt),true);
     if(freshness==="unknown")addMetric(badges,t("metricUnknown"),true);
   }
-  if(browser.discoveredAt)addMetric(badges,t("metricFound")+": "+dateFmt(browser.discoveredAt),true);
+  if(browser.discoveredAt)pop("metricFound",dateFmt(browser.discoveredAt),true);
   if(!badges.children.length)addMetric(badges,t("metricMissing"),true);
   card.append(badges);
   if(noteOf(browser))card.append(node("div","review-note",noteOf(browser)));
@@ -118,15 +123,10 @@ function matchesView(row) {
 }
 function render() {
   if(!state.loaded)return;
-  const rows=state.browsers.filter(row=>{
-    const hay=[row.name,row.engine,row.repo,row.summary,row.summaryRu,noteOf(row)].join(" ").toLowerCase();
-    return matchesView(row)&&(state.engine==="all"||String(row.engine).toLowerCase().includes(state.engine.toLowerCase()))&&hay.includes(state.q);
-  });
-  rows.sort((a,b)=>{
-    if(state.sort==="name")return a.name.localeCompare(b.name,state.lang);
-    if(state.sort==="updated")return timeValue(state.metrics[b.repo]?.lastPush)-timeValue(state.metrics[a.repo]?.lastPush);
-    return PRIORITY.indexOf(statusOf(a))-PRIORITY.indexOf(statusOf(b))||a.name.localeCompare(b.name,state.lang);
-  });
+  const rows=sortCatalog(
+    filterCatalog(state.browsers,state.metrics,{...state,noteOf},statusOf),
+    state.metrics,state.sort,statusOf,state.lang
+  );
   $("#cards").replaceChildren(...rows.map(buildCard));
   $("#empty").hidden=Boolean(rows.length);
   $("#results-count").textContent=t("count",{shown:rows.length,total:state.browsers.length});
@@ -230,6 +230,19 @@ async function init() {
   $("#search").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();render();});
   $("#engine").addEventListener("change",e=>{state.engine=e.target.value;render();});
   $("#sort").addEventListener("change",e=>{state.sort=e.target.value;render();});
+  for(const id of ["platform","contributors","license","first-since","stable-since"]){
+    $("#"+id).addEventListener("change",e=>{
+      const key={"first-since":"firstSince","stable-since":"stableSince"}[id]||id;
+      state[key]=e.target.value;render();
+    });
+  }
+  $("#clear-filters").addEventListener("click",()=>{
+    for(const id of ["search","platform","engine","contributors","license","first-since","stable-since"]){
+      const el=$("#"+id);el.value=["platform","engine","contributors","license"].includes(id)?"all":"";
+    }
+    Object.assign(state,{q:"",platform:"all",engine:"all",contributors:"all",license:"all",firstSince:"",stableSince:""});
+    render();
+  });
   document.querySelectorAll("[data-view]").forEach(el=>el.addEventListener("click",()=>{state.view=el.dataset.view;render();}));
   try {
     // Deliberately no reviews.json: no public per-user reviews, ever.
