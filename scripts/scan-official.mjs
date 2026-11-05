@@ -95,11 +95,11 @@ export async function run({dataDir=DATA,load=fetchHtml,now=new Date().toISOStrin
       catch(err){
         if(source.kind==="dia"){
           const plain=htmlText(page);
-          console.warn("Dia parse diagnostics "+source.platform+": htmlBytes="+page.length+
-            " visibleChars="+plain.length+
-            " dates="+(plain.match(/(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+\\d{1,2},\\s*20\\d{2}/g)||[]).length+
-            " versionTokens="+(plain.match(/(?:Mac|Windows)\\s+v\\d+\\.\\d+/gi)||[]).length+
-            " preview="+JSON.stringify(plain.slice(0,180)));
+          console.warn("Dia diagnostics "+source.platform+
+            ": html="+page.length+" clean="+plain.length+
+            " sample="+JSON.stringify(plain.slice(0,720))+
+            " dates="+JSON.stringify((plain.match(/\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}(?:,\s*\d{4})?/gi)||[]).slice(0,6))+
+            " versions="+JSON.stringify((plain.match(/\b(?:Mac|Windows)\s+v\d+(?:\.\d+){1,3}/gi)||[]).slice(0,6)));
         }
         throw err;
       }
