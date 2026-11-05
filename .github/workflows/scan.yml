@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/scan.mjs'
       - 'scripts/scan.test.mjs'
+      - 'site/catalog.mjs'
       - 'site/data/browsers.json'
       - '.github/workflows/scan.yml'
   schedule:
