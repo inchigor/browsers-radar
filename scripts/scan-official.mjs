@@ -89,7 +89,20 @@ export async function run({dataDir=DATA,load=fetchHtml,now=new Date().toISOStrin
     const item=next.sources[source.id];
     if(!item)throw new Error("Official source id not configured: "+source.id);
     try{
-      const release=parse(await load(source.url),source);
+      const page=await load(source.url);
+      let release;
+      try{release=parse(page,source);}
+      catch(err){
+        if(source.kind==="dia"){
+          const plain=htmlText(page);
+          console.warn("Dia parse diagnostics "+source.platform+": htmlBytes="+page.length+
+            " visibleChars="+plain.length+
+            " dates="+(plain.match(/(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+\\d{1,2},\\s*20\\d{2}/g)||[]).length+
+            " versionTokens="+(plain.match(/(?:Mac|Windows)\\s+v\\d+\\.\\d+/gi)||[]).length+
+            " preview="+JSON.stringify(plain.slice(0,180)));
+        }
+        throw err;
+      }
       if(Date.parse(release.publishedAt)>Date.parse(now)+86400000)throw new Error("Future release date");
       const old=item.releases[source.platform];
       if(old?.publishedAt&&release.publishedAt<old.publishedAt)throw new Error("Official page contains older release");

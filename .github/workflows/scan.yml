@@ -14,7 +14,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: browser-radar-scan
+  group: browser-radar-data
   cancel-in-progress: false
 jobs:
   scan:
