@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-11-05T17:44:08.744Z",
+  "scannedAt": "2026-11-05T17:48:22.315Z",
   "queries": [
     "\"arc browser\" alternative in:name,description,readme archived:false",
     "\"vertical tabs\" browser macos in:description,readme archived:false",
@@ -130,9 +130,19 @@
       "repo": "krystianslowik/arkt",
       "summary": "A native macOS browser that rebuilds Arc's experience on its own Chromium framework",
       "discoveredAt": "2026-11-05T17:44:08.744Z"
+    },
+    {
+      "id": "JamiroFerrara/tbrowser",
+      "name": "tbrowser",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "JamiroFerrara/tbrowser",
+      "summary": "Minimal Chromium browser: Chrome extensions, DevTools, vim-style command bar",
+      "discoveredAt": "2026-11-05T17:48:22.315Z"
     }
   ],
-  "attemptedAt": "2026-11-05T17:44:08.744Z",
+  "attemptedAt": "2026-11-05T17:48:22.315Z",
   "status": "success",
   "searchFailures": 0,
   "metricFailures": 0

@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-11-05T17:44:08.744Z",
+  "scannedAt": "2026-11-05T17:48:22.315Z",
   "repos": {
     "zen-browser/desktop": {
       "stars": 45583,
@@ -16,10 +16,10 @@
       "activeAuthors90d": 32,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "imputnet/helium": {
-      "stars": 22392,
+      "stars": 22393,
       "lastPush": "2026-11-05T17:18:08Z",
       "archived": false,
       "githubCreatedAt": "2025-02-15T11:43:15Z",
@@ -33,7 +33,7 @@
       "activeAuthors90d": 7,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "mantrakp04/ardia": {
       "stars": 1181,
@@ -50,11 +50,11 @@
       "activeAuthors90d": 3,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "pauljoda/Crest": {
       "stars": 1109,
-      "lastPush": "2026-11-05T17:29:32Z",
+      "lastPush": "2026-11-05T17:47:01Z",
       "archived": false,
       "githubCreatedAt": "2026-08-15T21:50:11Z",
       "licenseSpdx": "MPL-2.0",
@@ -67,7 +67,7 @@
       "activeAuthors90d": 16,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "lucianodiisouza/flecha-browser": {
       "stars": 120,
@@ -84,7 +84,7 @@
       "activeAuthors90d": 4,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "VictorKildahl/cra": {
       "stars": 146,
@@ -101,7 +101,7 @@
       "activeAuthors90d": 4,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "driceroland/Search": {
       "stars": 2824,
@@ -118,7 +118,7 @@
       "activeAuthors90d": 17,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "bnfy/blanc": {
       "stars": 141,
@@ -135,7 +135,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "villekivela/omaweb": {
       "stars": 10,
@@ -162,7 +162,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "YSamed/yalqen": {
       "stars": 36,
@@ -179,7 +179,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "OMS-Interactive/Aura-Browser": {
       "stars": 0,
@@ -196,7 +196,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 3,
       "commitsTruncated": false,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "WalkerSucksAtCode/Paddle": {
       "stars": 0,
@@ -213,7 +213,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "wsagency/wsurf": {
       "stars": 0,
@@ -230,7 +230,7 @@
       "activeAuthors90d": 2,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "Chaitanya045/koan": {
       "stars": 2,
@@ -247,7 +247,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 97,
       "commitsTruncated": false,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "St0neWan9/open-arc-browser": {
       "stars": 0,
@@ -264,7 +264,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "timwuhaotian/tap": {
       "stars": 2,
@@ -281,7 +281,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "MultiboxLabs/flow-browser": {
       "stars": 1093,
@@ -298,7 +298,7 @@
       "activeAuthors90d": 0,
       "commitsSample": 0,
       "commitsTruncated": false,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "zephium-browser/Zephium": {
       "stars": 985,
@@ -315,7 +315,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "frknue/soprano_web": {
       "stars": 0,
@@ -332,11 +332,11 @@
       "activeAuthors90d": 1,
       "commitsSample": 63,
       "commitsTruncated": false,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "unitybtw/nova-browser": {
       "stars": 8,
-      "lastPush": "2026-11-05T17:08:05Z",
+      "lastPush": "2026-11-05T17:46:52Z",
       "archived": false,
       "githubCreatedAt": "2026-07-23T13:48:33Z",
       "licenseSpdx": "MIT",
@@ -349,16 +349,16 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "arcusis/shaar": {
       "stars": 0,
-      "lastPush": "2026-11-05T17:44:36Z",
+      "lastPush": "2026-11-05T17:48:18Z",
       "archived": false,
       "githubCreatedAt": "2026-10-24T16:02:54Z",
       "licenseSpdx": "MPL-2.0",
-      "latestRelease": "engine-155.0.8059.84-shaar.11",
-      "lastReleaseAt": "2026-11-05T14:31:46Z",
+      "latestRelease": "engine-155.0.8059.84-shaar.2",
+      "lastReleaseAt": "2026-11-05T17:45:51Z",
       "latestStableTag": "v0.1.0",
       "latestStableAt": "2026-10-31T20:41:34Z",
       "firstReleaseAt": "2026-10-31T20:41:34Z",
@@ -366,11 +366,11 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     },
     "krystianslowik/arkt": {
       "stars": 6,
-      "lastPush": "2026-11-05T17:44:05Z",
+      "lastPush": "2026-11-05T17:45:15Z",
       "archived": false,
       "githubCreatedAt": "2026-10-23T11:26:41Z",
       "licenseSpdx": "MIT",
@@ -383,7 +383,24 @@
       "activeAuthors90d": 2,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T17:44:08.744Z"
+      "updatedAt": "2026-11-05T17:48:22.315Z"
+    },
+    "JamiroFerrara/tbrowser": {
+      "stars": 0,
+      "lastPush": "2026-11-05T17:48:04Z",
+      "archived": false,
+      "githubCreatedAt": "2026-11-04T16:22:11Z",
+      "licenseSpdx": null,
+      "latestRelease": null,
+      "lastReleaseAt": null,
+      "latestStableTag": null,
+      "latestStableAt": null,
+      "firstReleaseAt": null,
+      "releaseHistoryComplete": true,
+      "activeAuthors90d": 2,
+      "commitsSample": 60,
+      "commitsTruncated": false,
+      "updatedAt": "2026-11-05T17:48:22.315Z"
     }
   }
 }
