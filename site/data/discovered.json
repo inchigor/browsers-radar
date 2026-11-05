@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-11-05T19:12:04.444Z",
+  "scannedAt": "2026-11-05T19:15:34.902Z",
   "queries": [
     "\"arc browser\" alternative in:name,description,readme archived:false",
     "\"vertical tabs\" browser macos in:description,readme archived:false",
@@ -170,9 +170,29 @@
       "repo": "aeonfun/opendia",
       "summary": "Connect your browser to AI models. Just use Dia on Chrome, Arc or Firefox.",
       "discoveredAt": "2026-11-05T19:12:04.444Z"
+    },
+    {
+      "id": "vibe-karlo/roko-browser",
+      "name": "roko-browser",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": "https://rokobrowser.vercel.app",
+      "repo": "vibe-karlo/roko-browser",
+      "summary": "roko: a fast, private iOS browser in the spirit of Arc Search",
+      "discoveredAt": "2026-11-05T19:15:34.902Z"
+    },
+    {
+      "id": "SakibShahariar/MediaGrab",
+      "name": "MediaGrab",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "SakibShahariar/MediaGrab",
+      "summary": "A native Linux download manager with IDM-inspired video capture and browser integration.",
+      "discoveredAt": "2026-11-05T19:15:34.902Z"
     }
   ],
-  "attemptedAt": "2026-11-05T19:12:04.444Z",
+  "attemptedAt": "2026-11-05T19:15:34.902Z",
   "status": "success",
   "searchFailures": 0,
   "metricFailures": 0
