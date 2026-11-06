@@ -25,7 +25,7 @@ function isJunkName(name) {
   return /(unlocked|crack(?:ed)?|keygen|full[-_ ]?version|history[-_ ]?timeline|browser[-_ ]?history|free[-_ ]?download)/i.test(String(name));
 }
 export function looksRelevant(repo) {
-  if (!repo || repo.archived || repo.fork || !repo.full_name || isExcludedBrowser(repo.full_name)) return false;
+  if (!repo || repo.archived || repo.fork || repo.size === 0 || !repo.full_name || isExcludedBrowser(repo.full_name)) return false;
   const name = String(repo.name || "").toLowerCase();
   if (!String(repo.description || "").trim()) return false;
   if (/(desktop[-_]?web[-_]?browsers|browser[-_]?lists?|browser[-_]?directories)/i.test(name)) return false;
