@@ -1,9 +1,9 @@
-import {countActiveProjects, metricFreshness} from "./metrics.mjs";
-import {parseReviews, compareReviews, storeImportedReviews} from "./reviews.mjs";
-import {translate, detectLanguage} from "./i18n.mjs";
-import {filterCatalog,sortCatalog,licenseName} from "./catalog.mjs";
-import {officialMetric} from "./official.mjs";
-import {partitionCatalog, verifiedFeature} from "./review-queue.mjs";
+import {countActiveProjects, metricFreshness} from "./metrics.mjs?v=20261106-queue1";
+import {parseReviews, compareReviews, storeImportedReviews} from "./reviews.mjs?v=20261106-queue1";
+import {translate, detectLanguage} from "./i18n.mjs?v=20261106-queue1";
+import {filterCatalog,sortCatalog,licenseName} from "./catalog.mjs?v=20261106-queue1";
+import {officialMetric} from "./official.mjs?v=20261106-queue1";
+import {partitionCatalog, verifiedFeature} from "./review-queue.mjs?v=20261106-queue1";
 
 const API_ROOT = "./data/";
 // Different key from the original private site. Both GitHub Pages sites share one origin.

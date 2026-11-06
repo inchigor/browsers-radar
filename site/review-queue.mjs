@@ -1,4 +1,4 @@
-import {isExcludedBrowser} from './excluded.mjs';
+import {isExcludedBrowser} from './excluded.mjs?v=20261106-queue1';
 
 export function partitionCatalog(curated, candidates, approved) {
   const key=row=>String(row.repo||row.id||'').toLowerCase();

@@ -63,3 +63,13 @@ test("official-only browsers have stable IDs, explicit sources and no private us
   assert.ok(app.includes("officialMetric"));
   assert.ok(app.includes('"browsers.json","discovered.json","metrics.json","official.json","approved.json"'));
 });
+
+test('HTML and application modules use the same cache revision',()=>{
+  const html=read('site/index.html'), app=read('site/app.js'), queue=read('site/review-queue.mjs');
+  const revision=html.match(/src="\.\/app\.js\?v=([a-z0-9-]+)"/)?.[1];
+  assert.ok(revision,'The app entry must have a cache revision');
+  const imports=[...app.matchAll(/from "\.\/([^"?]+)(?:\?v=([^"#]+))?"/g)];
+  assert.ok(imports.length>0);
+  for(const [,file,version] of imports)assert.equal(version,revision,`${file} cache revision`);
+  assert.ok(queue.includes(`./excluded.mjs?v=${revision}`));
+});
