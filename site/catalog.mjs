@@ -81,13 +81,16 @@ export function sortCatalog(rows, metrics, sort, statusOf, lang = "en") {
     if (sort === "first-release-new" || sort === "first-release-old") return timestamp(metric?.firstReleaseAt);
     return null;
   };
-  const direction = sort === "first-release-old" ? "asc" : "desc";
+  const direction = ["first-release-old", "added-old"].includes(sort) ? "asc" : "desc";
   return [...rows].sort((a, b) => {
     if (sort === "priority") {
       const rank = PRIORITY.indexOf(statusOf(a)) - PRIORITY.indexOf(statusOf(b));
       if (rank) return rank;
     } else if (sort !== "name") {
-      const order = compareOptional(key(metrics[a.repo||a.id] || {}), key(metrics[b.repo||b.id] || {}), direction);
+      const value = row => sort === "added-new" || sort === "added-old"
+        ? timestamp(row.discoveredAt) ?? timestamp(row.addedAt)
+        : key(metrics[row.repo||row.id] || {});
+      const order = compareOptional(value(a), value(b), direction);
       if (order) return order;
     }
     return a.name.localeCompare(b.name, lang);

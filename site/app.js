@@ -23,7 +23,7 @@ function stored(key) {
 const state={
   browsers:[], metrics:{}, reviews:{}, view:"all", q:"", engine:"all",
   platform:"all", source:"all", contributors:"all", license:"all", firstSince:"", stableSince:"",
-  sort:"priority", editing:null, scannedAt:null, scanStatus:null, loaded:false, imported:false,
+  sort:"added-new", editing:null, scannedAt:null, scanStatus:null, loaded:false, imported:false,
   lang:detectLanguage(stored(LANGUAGE_KEY),navigator.language)
 };
 const t=(key,vars)=>translate(state.lang,key,vars);

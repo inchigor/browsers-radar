@@ -64,3 +64,17 @@ test("closed-source projects have no inferred GitHub metrics and can be filtered
   assert.deepEqual(filterCatalog([row],observations,{...base,contributors:"1"},status),[]);
   assert.deepEqual(filterCatalog([row],observations,{...base,stableSince:"2026-01-01"},status),[]);
 });
+
+test("addition date sorts discovered and manually dated browsers, with unknown dates last",()=>{
+  const rows=[
+    {id:"unknown",name:"Unknown",repo:"x/unknown"},
+    {id:"invalid",name:"Bad",discoveredAt:"not-a-date"},
+    {id:"old",name:"Old",addedAt:"2025-01-01"},
+    {id:"z",name:"Zulu",discoveredAt:"2026-11-05T12:00:00Z"},
+    {id:"a",name:"Alpha",discoveredAt:"2026-11-05T12:00:00Z"},
+    {id:"recent",name:"Recent",discoveredAt:"2026-11-05T15:00:00Z"}
+  ];
+  const extra={"x/unknown":{lastPush:"2030-01-01",lastReleaseAt:"2030-01-01"}};
+  assert.deepEqual(sortCatalog(rows,extra,"added-new",status).map(x=>x.id),["recent","a","z","old","invalid","unknown"]);
+  assert.deepEqual(sortCatalog(rows,extra,"added-old",status).map(x=>x.id),["old","a","z","recent","invalid","unknown"]);
+});
