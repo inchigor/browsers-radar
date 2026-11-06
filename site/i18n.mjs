@@ -3,8 +3,6 @@ export const LANGS = ["en", "ru"];
 export const messages = {
   en: {
     brandSubtitle:"Browser discovery", navLabel:"Explore", navAll:"All browsers",
-    queueHelp:"Candidates are unverified. Maintainers can approve confirmed browsers in the repository.", queueApprove:"Open approval list ↗",
-    navPending:"Awaiting review", featureMac:"macOS", featureSilicon:"Apple Silicon", featureTabs:"Vertical tabs", featureExtensions:"Extensions", feature_yes:"Yes", feature_no:"No", feature_unknown:"Unverified", featureSource:"Source ↗",
     navNew:"New discoveries", navTesting:"Testing", navChecked:"Reviewed",
     approachTitle:"Our approach", approachText:"Fewer random forks. More evidence, hands-on experience, and security updates.",
     sourceCatalog:"Original catalog inspiration ↗", officialNotes:"Release notes ↗",
@@ -65,8 +63,6 @@ export const messages = {
   },
   ru: {
     brandSubtitle:"Исследование браузеров", navLabel:"Обзор", navAll:"Все браузеры",
-    queueHelp:"Находки не проверены. Подтверждённые браузеры можно добавить в список через GitHub.", queueApprove:"Открыть список подтверждений ↗",
-    navPending:"Ожидают проверки", featureMac:"macOS", featureSilicon:"Apple Silicon", featureTabs:"Вертикальные вкладки", featureExtensions:"Расширения", feature_yes:"Да", feature_no:"Нет", feature_unknown:"Не проверено", featureSource:"Источник ↗",
     navNew:"Новые находки", navTesting:"Тестирую", navChecked:"Проверенные",
     approachTitle:"Подход", approachText:"Меньше случайных форков. Больше проверенных фактов, опыта и обновлений безопасности.",
     sourceCatalog:"Источник исходного каталога ↗", officialNotes:"Релизы ↗",

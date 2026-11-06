@@ -8,7 +8,7 @@
   <title>Browser Radar</title>
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="./theme-light.css" />
-  <script type="module" src="./app.js?v=20261106-queue1"></script>
+  <script type="module" src="./app.js?v=20261106-catalog2"></script>
 </head>
 <body>
   <div class="layout">
@@ -17,7 +17,6 @@
       <div class="nav-label" data-i18n="navLabel">Explore</div>
       <nav aria-label="Categories">
         <button class="nav active" data-view="all"><span>▦</span> <span data-i18n="navAll">All browsers</span><b id="nav-all">—</b></button>
-        <button class="nav" data-view="pending"><span>◷</span> <span data-i18n="navPending">Awaiting review</span><b id="nav-pending">—</b></button>
         <button class="nav" data-view="new"><span>✦</span> <span data-i18n="navNew">New discoveries</span><b id="nav-new">—</b></button>
         <button class="nav" data-view="testing"><span>◷</span> <span data-i18n="navTesting">Testing</span><b id="nav-testing">—</b></button>
         <button class="nav" data-view="checked"><span>✓</span> <span data-i18n="navChecked">Reviewed</span><b id="nav-checked">—</b></button>
@@ -52,7 +51,6 @@
         </section>
         <section class="results" aria-labelledby="results-title">
           <div class="results-head"><div><h2 id="results-title" data-i18n="catalog">Catalog</h2><p id="results-count">Loading...</p></div><div class="hint" id="local-hint" data-i18n="localOnly">Reviews are stored in this browser only</div></div>
-          <p id="queue-help" hidden><span data-i18n="queueHelp">Candidates are unverified. Maintainers can approve confirmed browsers in the repository.</span> <a href="https://github.com/inchigor/browsers-radar/edit/main/site/data/approved.json" target="_blank" rel="noopener noreferrer" data-i18n="queueApprove">Open approval list ↗</a></p>
           <div class="filters">
             <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Name, engine, repository, notes..." data-i18n-placeholder="searchPlaceholder" autocomplete="off" aria-label="Search browsers" data-i18n-aria-label="searchLabel" /></label>
             <select id="platform" aria-label="Platform" data-i18n-aria-label="platformLabel">
