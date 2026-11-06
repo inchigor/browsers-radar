@@ -152,3 +152,15 @@ test('manually excluded IDs stay excluded case-insensitively',async()=>{
   assert.equal(isExcludedBrowser('unknown/browser'),false);
   assert.equal(looksRelevant({name:'browser',description:'native macOS browser',full_name:'WebKit/WebKit'}),false);
 });
+
+
+test('excluded candidates remain in history but are not queried for metrics',async t=>{
+  const old=[{id:'929229kkk/duck-browser',repo:'929229kkk/duck-browser',name:'duck-browser'}];
+  const dir=await fixture(t,old);
+  const requests=[];
+  const request=async uri=>{requests.push(uri);return fakeApi()(uri);};
+  const result=await run({dataDir:dir,now,request});
+  assert.equal(result.status,'success');
+  assert.deepEqual((await load(dir,'discovered.json')).candidates,old);
+  assert.ok(!requests.some(uri=>uri.includes('duck-browser')));
+});

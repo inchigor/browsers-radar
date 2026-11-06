@@ -143,7 +143,7 @@ export async function run({dataDir=DATA,request=api,now=new Date().toISOString()
     candidates.push(normalizeCandidate(repo,now));known.add(key);added++;
   }
   const metrics={...(oldMetrics.repos||{})};
-  const targets=[...new Map([...curated.map(x=>x.repo),...candidates.slice(-12).map(x=>x.repo)].filter(Boolean).map(repo=>[repoKey(repo),repo])).values()];
+  const targets=[...new Map([...curated.map(x=>x.repo),...candidates.filter(x=>!isExcludedBrowser(x.repo||x.id)).slice(-12).map(x=>x.repo)].filter(Boolean).map(repo=>[repoKey(repo),repo])).values()];
   for(const repo of targets){
     try{metrics[repo]={...await getMetrics(repo,since,request),updatedAt:now};metricSuccesses++;console.log(`Metrics: ${repo}`);}
     catch(e){metricFailures++;console.warn(`Skipped ${repo}: ${e.message}`);}
