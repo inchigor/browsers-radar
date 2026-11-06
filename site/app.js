@@ -3,6 +3,7 @@ import {parseReviews, compareReviews, storeImportedReviews} from "./reviews.mjs"
 import {translate, detectLanguage} from "./i18n.mjs";
 import {filterCatalog,sortCatalog,licenseName} from "./catalog.mjs";
 import {officialMetric} from "./official.mjs";
+import {isExcludedBrowser} from "./excluded.mjs";
 
 const API_ROOT = "./data/";
 // Different key from the original private site. Both GitHub Pages sites share one origin.
@@ -259,7 +260,7 @@ async function init() {
     // Deliberately no reviews.json: no public per-user reviews, ever.
     const [curated,discovery,metrics,official]=await Promise.all(["browsers.json","discovered.json","metrics.json","official.json"].map(getJson));
     const byId=new Map();
-    for(const browser of [...curated,...(discovery.candidates||[])])if(browser?.id)byId.set(browser.id,browser);
+    for(const browser of [...curated,...(discovery.candidates||[])])if(browser?.id && !isExcludedBrowser(browser.repo||browser.id))byId.set(browser.id,browser);
     state.browsers=[...byId.values()];
     state.metrics={...metrics.repos,...Object.fromEntries(Object.entries(official.sources||{}).map(([id,data])=>[id,officialMetric(data)]))};
     state.scannedAt=discovery.scannedAt||null;

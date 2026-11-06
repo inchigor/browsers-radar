@@ -3,6 +3,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { isExcludedBrowser } from "../site/excluded.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = path.join(ROOT, "site", "data");
@@ -24,7 +25,7 @@ function isJunkName(name) {
   return /(unlocked|crack(?:ed)?|keygen|full[-_ ]?version|history[-_ ]?timeline|browser[-_ ]?history|free[-_ ]?download)/i.test(String(name));
 }
 export function looksRelevant(repo) {
-  if (!repo || repo.archived || repo.fork || !repo.full_name) return false;
+  if (!repo || repo.archived || repo.fork || !repo.full_name || isExcludedBrowser(repo.full_name)) return false;
   const name = String(repo.name || "").toLowerCase();
   if (!String(repo.description || "").trim()) return false;
   if (/(desktop[-_]?web[-_]?browsers|browser[-_]?lists?|browser[-_]?directories)/i.test(name)) return false;
@@ -34,8 +35,12 @@ export function looksRelevant(repo) {
   if (!/(browser|браузер)/i.test(text)) return false;
   // Exclude tools that only integrate with existing browsers.
   if (/(terminal|input.method|(?:^|[^a-z])ime(?:[^a-z]|$)|browser.?cli|cross.browser|browser per tab|browser extension|reuse existing browser tabs|no embedded browser|web automation|browser agent)/i.test(text)) return false;
-  // Relevance is only a candidate heuristic, not proof of platform compatibility.
-  return /(arc|vertical|sidebar|swift|macos|mac os|windows|linux|desktop|electron|chromium|firefox|webkit|gecko)/i.test(text);
+  // Exclude projects that mention browsers but serve a different purpose.
+  if (/(?:browser automation|browser integration|browser engine|running in (?:the|a) browser|runs in (?:the|a) browser|setup guide|privacy setup|migration|migrate|import (?:reset|bookmarks|history)|look and behave like|browser profile|connect your browser|download manager|(?:ios|android)[- ](?:only|browser))/i.test(text)) return false;
+  if (/\b(?:ios|android)\b/i.test(text) && !/\b(?:macos|mac os|windows|linux|desktop)\b/i.test(text)) return false;
+  // Require affirmative evidence that the project itself is a desktop browser.
+  return /\b(?:web|desktop|chromium|webkit|gecko|firefox|macos|windows|linux|electron|swift|native|open.source|private|minimal|keyboard.driven)\b(?:[ -]+[a-z0-9]+){0,3}[ -]+browser\b|\bbrowser\s+(?:for\s+(?:macos|mac os|windows|linux|desktop)|(?:built|based)\s+(?:on|with|using)|with\s+(?:vertical tabs|sidebar|tabs|extensions))\b/i.test(text);
+
 }
 export function normalizeCandidate(repo, now) {
   return {

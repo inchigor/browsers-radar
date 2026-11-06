@@ -120,3 +120,34 @@ test('prerelease-tag guard handles mislabelled beta releases',()=>{
   ],true);
   assert.equal(data.latestStableTag,'v2.9.0');
 });
+
+test('reject non-browser integrations, tools, engines and mobile-only apps',()=>{
+  for (const [name,description] of [
+    ['browser2zen','Private browser2zen with profile-aware Arc migration and fresh import reset'],
+    ['firefox-zen','Make Firefox look and behave like Zen Browser on macOS'],
+    ['Brave-Private-Browsing-Setup','Brave Browser Windows 11 Privacy Setup Guide 2026'],
+    ['fourdock-macos','Experimental macOS workspace for WhatsApp using a dedicated full-browser profile'],
+    ['WebKit','Home of the WebKit project, the browser engine used by Safari on macOS'],
+    ['risc-os','A recreation of the RISC OS desktop running in the browser'],
+    ['auto-deal-researcher','Beta release with LLM integration and browser automation'],
+    ['MediaGrab','A native Linux download manager with video capture and browser integration'],
+    ['roko-browser','roko: a fast, private iOS browser in the spirit of Arc Search'],
+    ['mobile-browser','A Chromium browser for Android'],
+    ['opendia','Connect your browser to AI models. Just use Dia on Chrome']
+  ]) assert.equal(looksRelevant({name,description,full_name:'example/'+name}),false,name);
+});
+test('accept plausible desktop browser descriptions without asserting compatibility',()=>{
+  for(const [name,description] of [
+    ['Paddle','Personal macOS WebKit browser'],
+    ['vane','Open-source native macOS browser with sidebar tabs'],
+    ['koan','A Zen-style browser built on Chromium'],
+    ['omaweb','A keyboard-driven web browser with vertical tabs'],
+    ['Aegis','A privacy-first Chromium browser for Windows and Linux']
+  ]) assert.equal(looksRelevant({name,description,full_name:'example/'+name}),true,name);
+});
+test('manually excluded IDs stay excluded case-insensitively',async()=>{
+  const {isExcludedBrowser}=await import('../site/excluded.mjs');
+  assert.equal(isExcludedBrowser('WebKit/WebKit'),true);
+  assert.equal(isExcludedBrowser('unknown/browser'),false);
+  assert.equal(looksRelevant({name:'browser',description:'native macOS browser',full_name:'WebKit/WebKit'}),false);
+});

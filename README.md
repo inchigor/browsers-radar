@@ -53,7 +53,7 @@ This does not mirror a user's installed browser, download executables, query pri
 - For platforms, **unverified** projects are excluded from platform-specific filters rather than guessed from their repository description.
 - Blank release dates are **unknown**, never treated as zero or as the date the repository was created.
 
-The scanner searches macOS, Windows and Linux projects. Newly found candidates are unverified until manually reviewed.
+The scanner searches for desktop browsers on macOS, Windows and Linux using conservative heuristics. Newly found candidates are unverified until manually reviewed. Clearly unrelated reviewed entries are hidden from the catalog while discovery history and personal reviews remain intact; heuristic filtering can still miss genuine projects or admit false positives.
 
 ## Language
 
