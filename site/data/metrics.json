@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-11-06T17:03:32.216Z",
+  "scannedAt": "2026-11-06T17:05:54.160Z",
   "repos": {
     "zen-browser/desktop": {
       "stars": 45608,
@@ -16,7 +16,7 @@
       "activeAuthors90d": 30,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "imputnet/helium": {
       "stars": 22424,
@@ -33,7 +33,7 @@
       "activeAuthors90d": 8,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "mantrakp04/ardia": {
       "stars": 1208,
@@ -50,7 +50,7 @@
       "activeAuthors90d": 3,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "pauljoda/Crest": {
       "stars": 1121,
@@ -67,7 +67,7 @@
       "activeAuthors90d": 15,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "lucianodiisouza/flecha-browser": {
       "stars": 120,
@@ -84,7 +84,7 @@
       "activeAuthors90d": 4,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "VictorKildahl/cra": {
       "stars": 156,
@@ -101,7 +101,7 @@
       "activeAuthors90d": 4,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "driceroland/Search": {
       "stars": 2830,
@@ -118,7 +118,7 @@
       "activeAuthors90d": 17,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "bnfy/blanc": {
       "stars": 142,
@@ -135,7 +135,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "villekivela/omaweb": {
       "stars": 10,
@@ -162,7 +162,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "YSamed/yalqen": {
       "stars": 36,
@@ -230,11 +230,11 @@
       "activeAuthors90d": 2,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-05T19:12:04.444Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "Chaitanya045/koan": {
       "stars": 2,
-      "lastPush": "2026-11-06T17:03:49Z",
+      "lastPush": "2026-11-06T17:04:38Z",
       "archived": false,
       "githubCreatedAt": "2026-10-19T05:36:13Z",
       "licenseSpdx": "MIT",
@@ -247,7 +247,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "St0neWan9/open-arc-browser": {
       "stars": 0,
@@ -264,7 +264,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "timwuhaotian/tap": {
       "stars": 2,
@@ -281,7 +281,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "MultiboxLabs/flow-browser": {
       "stars": 1095,
@@ -298,7 +298,7 @@
       "activeAuthors90d": 0,
       "commitsSample": 0,
       "commitsTruncated": false,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "zephium-browser/Zephium": {
       "stars": 989,
@@ -315,7 +315,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "frknue/soprano_web": {
       "stars": 0,
@@ -332,7 +332,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 63,
       "commitsTruncated": false,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "unitybtw/nova-browser": {
       "stars": 8,
@@ -349,7 +349,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "arcusis/shaar": {
       "stars": 0,
@@ -366,7 +366,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "krystianslowik/arkt": {
       "stars": 6,
@@ -383,7 +383,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "JamiroFerrara/tbrowser": {
       "stars": 0,
@@ -400,7 +400,7 @@
       "activeAuthors90d": 2,
       "commitsSample": 83,
       "commitsTruncated": false,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "solidcarbon/Aphrodite": {
       "stars": 0,
@@ -417,7 +417,7 @@
       "activeAuthors90d": 1,
       "commitsSample": 9,
       "commitsTruncated": false,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "notnaki/vane": {
       "stars": 21,
@@ -434,7 +434,7 @@
       "activeAuthors90d": 2,
       "commitsSample": 100,
       "commitsTruncated": true,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "aeonfun/opendia": {
       "stars": 1930,
@@ -621,7 +621,7 @@
       "activeAuthors90d": 9,
       "commitsSample": 58,
       "commitsTruncated": false,
-      "updatedAt": "2026-11-06T17:03:32.216Z"
+      "updatedAt": "2026-11-06T17:05:54.160Z"
     },
     "dimakis/mitzo": {
       "stars": 1,
