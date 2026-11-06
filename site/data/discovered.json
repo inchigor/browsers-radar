@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-11-05T19:15:34.902Z",
+  "scannedAt": "2026-11-06T16:43:11.469Z",
   "queries": [
     "\"arc browser\" alternative in:name,description,readme archived:false",
     "\"vertical tabs\" browser macos in:description,readme archived:false",
@@ -190,9 +190,89 @@
       "repo": "SakibShahariar/MediaGrab",
       "summary": "A native Linux download manager with IDM-inspired video capture and browser integration.",
       "discoveredAt": "2026-11-05T19:15:34.902Z"
+    },
+    {
+      "id": "mikklfr/browser2zen",
+      "name": "browser2zen",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "mikklfr/browser2zen",
+      "summary": "Private browser2zen with profile-aware Arc migration and fresh import reset",
+      "discoveredAt": "2026-11-06T16:43:11.469Z"
+    },
+    {
+      "id": "manuelpuyol/firefox-zen",
+      "name": "firefox-zen",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "manuelpuyol/firefox-zen",
+      "summary": "Make Firefox look and behave like Zen Browser on macOS",
+      "discoveredAt": "2026-11-06T16:43:11.469Z"
+    },
+    {
+      "id": "rajsoni76515/Brave-Private-Browsing-Setup",
+      "name": "Brave-Private-Browsing-Setup",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "rajsoni76515/Brave-Private-Browsing-Setup",
+      "summary": "Brave Browser Windows 11 Privacy Setup Guide 2026",
+      "discoveredAt": "2026-11-06T16:43:11.469Z"
+    },
+    {
+      "id": "dorianganessa/fourdock-macos",
+      "name": "fourdock-macos",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "dorianganessa/fourdock-macos",
+      "summary": "Experimental macOS workspace for WhatsApp, Telegram, Fastmail and Gmail using a dedicated full-browser profile",
+      "discoveredAt": "2026-11-06T16:43:11.469Z"
+    },
+    {
+      "id": "WebKit/WebKit",
+      "name": "WebKit",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "WebKit/WebKit",
+      "summary": "Home of the WebKit project, the browser engine used by Safari, Mail, App Store and many other applications on macOS, iOS and Linux.",
+      "discoveredAt": "2026-11-06T16:43:11.469Z"
+    },
+    {
+      "id": "pmirvine/risc-os",
+      "name": "risc-os",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "pmirvine/risc-os",
+      "summary": "A faithful recreation of the Acorn RISC OS 3.71 desktop, BBC BASIC V and its applications, running in the browser",
+      "discoveredAt": "2026-11-06T16:43:11.469Z"
+    },
+    {
+      "id": "DracieVajko/auto-deal-researcher",
+      "name": "auto-deal-researcher",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "DracieVajko/auto-deal-researcher",
+      "summary": "Beta release of Auto Deal Searcher with LLM integration and browser automation.",
+      "discoveredAt": "2026-11-06T16:43:11.469Z"
+    },
+    {
+      "id": "abdul-mateen-14/AEGIS-BROWSER",
+      "name": "AEGIS-BROWSER",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": "https://aegis-browser.pages.dev",
+      "repo": "abdul-mateen-14/AEGIS-BROWSER",
+      "summary": "Aegis Browser - a privacy-first, de-Googled Chromium fork for Android, Windows and Linux. Built entirely on GitHub's free runners: Aegis Shield ad/tracker blocking, Liquid Glass UI, Aegis ID encrypted sync, no telemetry by default.",
+      "discoveredAt": "2026-11-06T16:43:11.469Z"
     }
   ],
-  "attemptedAt": "2026-11-05T19:15:34.902Z",
+  "attemptedAt": "2026-11-06T16:43:11.469Z",
   "status": "success",
   "searchFailures": 0,
   "metricFailures": 0
