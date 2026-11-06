@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-11-06T16:59:37.248Z",
+  "scannedAt": "2026-11-06T17:01:19.533Z",
   "queries": [
     "\"arc browser\" alternative in:name,description,readme archived:false",
     "\"vertical tabs\" browser macos in:description,readme archived:false",
@@ -280,9 +280,19 @@
       "repo": "929229kkk/duck-browser",
       "summary": "DUCK Browser — macOS WebKit Browser",
       "discoveredAt": "2026-11-06T16:59:37.248Z"
+    },
+    {
+      "id": "dimakis/mitzo",
+      "name": "mitzo",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "dimakis/mitzo",
+      "summary": "A self-hosted workspace for AI conversations and agent-assisted work, accessible from your phone or desktop browser, with an optional native iOS app.",
+      "discoveredAt": "2026-11-06T17:01:19.533Z"
     }
   ],
-  "attemptedAt": "2026-11-06T16:59:37.248Z",
+  "attemptedAt": "2026-11-06T17:01:19.533Z",
   "status": "partial",
   "searchFailures": 0,
   "metricFailures": 1
