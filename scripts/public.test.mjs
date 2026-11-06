@@ -61,5 +61,5 @@ test("official-only browsers have stable IDs, explicit sources and no private us
   assert.equal(fs.existsSync(path.join(site,"data/reviews.json")),false);
   const app=read("site/app.js");
   assert.ok(app.includes("officialMetric"));
-  assert.ok(app.includes('"browsers.json","discovered.json","metrics.json","official.json"'));
+  assert.ok(app.includes('"browsers.json","discovered.json","metrics.json","official.json","approved.json"'));
 });

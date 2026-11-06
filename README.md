@@ -7,7 +7,7 @@ A lightweight, public, bilingual (English/Russian) discovery dashboard for deskt
 ## What it does
 
 - Curated browser listings, including projects for macOS, Windows and Linux.
-- Weekly GitHub discovery of **unverified candidates** and refresh of project activity metrics.
+- Weekly GitHub discovery of **unverified candidates** in a separate review queue and refresh of project activity metrics.
 - Desktop platform filters: **macOS, Windows, Linux**, plus engine search.
 - Filters for observed GitHub contributors, license (SPDX), first public release date and most recent non-prerelease release.
 - Sort by GitHub stars, last code push, observed contributors, and release dates.
@@ -106,3 +106,9 @@ Browser Radar - открытый каталог браузеров с автом
 **Личные оценки и заметки хранятся только в вашем браузере** (`localStorage`). В публичный GitHub они не отправляются, не синхронизируются и не входят в файлы сайта. При очистке данных сайта оценки могут исчезнуть - используйте кнопки **«Экспорт оценок»** и **«Импорт оценок»**. Исходный каталог общий, но все личные статусы независимы для каждого посетителя.
 
 Новые находки автоматического сканера требуют проверки: появление в каталоге не означает рекомендацию устанавливать приложение. Фильтры поддерживают macOS, Windows и Linux, движок, число наблюдаемых авторов, лицензию и даты первого и последнего стабильного релиза. Последнее обновление означает push в GitHub, а число авторов - ограниченную выборку коммитов за 90 дней.
+
+## Candidate review and evidence
+
+Automatic discoveries appear under **Awaiting review**, not in the main catalog. Existing discovery records and visitor reviews stay intact. A maintainer can confirm a standalone desktop browser by adding its exact `owner/repository` ID to `site/data/approved.json` and committing the change. The ID must be a JSON string in the array; never put personal reviews in this public file. Removing an ID returns the entry to the queue. Curated records in `browsers.json` are already catalog entries. Excluded non-browser IDs remain hidden and cannot be approved without reviewing the exclusion list.
+
+Browser cards show macOS, Apple Silicon, vertical tabs and extensions as unverified until supported by manually checked evidence. Curated records can include `verification`, with feature keys `macos`, `appleSilicon`, `verticalTabs`, `extensions`; each value is an object such as `{ "value": "yes", "checkedAt": "2026-11-06", "source": "https://example.org/source" }`. Use `yes` or `no` only with a valid date and a direct HTTPS source; otherwise the site displays unverified. These are public facts, separate from private visitor reviews.

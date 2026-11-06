@@ -3,7 +3,7 @@ import {parseReviews, compareReviews, storeImportedReviews} from "./reviews.mjs"
 import {translate, detectLanguage} from "./i18n.mjs";
 import {filterCatalog,sortCatalog,licenseName} from "./catalog.mjs";
 import {officialMetric} from "./official.mjs";
-import {isExcludedBrowser} from "./excluded.mjs";
+import {partitionCatalog, verifiedFeature} from "./review-queue.mjs";
 
 const API_ROOT = "./data/";
 // Different key from the original private site. Both GitHub Pages sites share one origin.
@@ -22,7 +22,7 @@ function stored(key) {
   try{return localStorage.getItem(key);}catch{return null;}
 }
 const state={
-  browsers:[], metrics:{}, reviews:{}, view:"all", q:"", engine:"all",
+  browsers:[], pending:[], metrics:{}, reviews:{}, view:"all", q:"", engine:"all",
   platform:"all", source:"all", contributors:"all", license:"all", firstSince:"", stableSince:"",
   sort:"added-new", editing:null, scannedAt:null, scanStatus:null, loaded:false, imported:false,
   lang:detectLanguage(stored(LANGUAGE_KEY),navigator.language)
@@ -116,6 +116,14 @@ function buildCard(browser) {
   if(browser.discoveredAt)pop("metricFound",dateFmt(browser.discoveredAt),true);
   if(!badges.children.length)addMetric(badges,t("metricMissing"),true);
   card.append(badges);
+  const checks=node("div","metrics");
+  for(const [key,label] of [["macos","featureMac"],["appleSilicon","featureSilicon"],["verticalTabs","featureTabs"],["extensions","featureExtensions"]]){
+    const evidence=verifiedFeature(browser,key);
+    const item=node("span","metric muted",t(label)+": "+t(evidence?"feature_"+evidence.value:"feature_unknown"));
+    if(evidence){item.append(" · "+dateFmt(evidence.checkedAt)+" ",external(t("featureSource"),evidence.source));}
+    checks.append(item);
+  }
+  card.append(checks);
   if(noteOf(browser))card.append(node("div","review-note",noteOf(browser)));
   const bottom=node("div","card-bottom"), links=node("div","links");
   if(browser.url&&/^https:\/\//i.test(browser.url))links.append(external(t("website"),browser.url));
@@ -135,20 +143,22 @@ function matchesView(row) {
 }
 function render() {
   if(!state.loaded)return;
+  $("#queue-help").hidden=state.view!=="pending";
+  const pool=state.view==="pending"?state.pending:state.browsers;
   const rows=sortCatalog(
-    filterCatalog(state.browsers,state.metrics,{...state,noteOf},statusOf),
+    filterCatalog(pool,state.metrics,{...state,noteOf},statusOf),
     state.metrics,state.sort,statusOf,state.lang
   );
   $("#cards").replaceChildren(...rows.map(buildCard));
   $("#empty").hidden=Boolean(rows.length);
-  $("#results-count").textContent=t("count",{shown:rows.length,total:state.browsers.length});
+  $("#results-count").textContent=t("count",{shown:rows.length,total:pool.length});
   const count=statuses=>state.browsers.filter(row=>statuses.includes(statusOf(row))).length;
   const stats={
     "total-count":state.browsers.length,
     "stat-new":count(["new"]),"stat-testing":count(["testing"]),
     "stat-checked":count(["checked","rejected"]),
     "stat-active":state.scannedAt?countActiveProjects(state.browsers,state.metrics):"—",
-    "nav-all":state.browsers.length,"nav-new":count(["new"]),
+    "nav-all":state.browsers.length,"nav-pending":state.pending.length,"nav-new":count(["new"]),
     "nav-testing":count(["testing"]),"nav-checked":count(["checked","rejected"])
   };
   for(const [id,value] of Object.entries(stats))$("#"+id).textContent=value;
@@ -258,10 +268,9 @@ async function init() {
   document.querySelectorAll("[data-view]").forEach(el=>el.addEventListener("click",()=>{state.view=el.dataset.view;render();}));
   try {
     // Deliberately no reviews.json: no public per-user reviews, ever.
-    const [curated,discovery,metrics,official]=await Promise.all(["browsers.json","discovered.json","metrics.json","official.json"].map(getJson));
-    const byId=new Map();
-    for(const browser of [...curated,...(discovery.candidates||[])])if(browser?.id && !isExcludedBrowser(browser.repo||browser.id))byId.set(browser.id,browser);
-    state.browsers=[...byId.values()];
+    const [curated,discovery,metrics,official,approved]=await Promise.all(["browsers.json","discovered.json","metrics.json","official.json","approved.json"].map(getJson));
+    const lists=partitionCatalog(curated,discovery.candidates||[],approved);
+    state.browsers=lists.catalog;state.pending=lists.pending;
     state.metrics={...metrics.repos,...Object.fromEntries(Object.entries(official.sources||{}).map(([id,data])=>[id,officialMetric(data)]))};
     state.scannedAt=discovery.scannedAt||null;
     state.scanStatus=discovery.status||null;
