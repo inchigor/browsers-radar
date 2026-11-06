@@ -36,7 +36,7 @@ export function looksRelevant(repo) {
   // Exclude tools that only integrate with existing browsers.
   if (/(terminal|input.method|(?:^|[^a-z])ime(?:[^a-z]|$)|browser.?cli|cross.browser|browser per tab|browser extension|reuse existing browser tabs|no embedded browser|web automation|browser agent)/i.test(text)) return false;
   // Exclude projects that mention browsers but serve a different purpose.
-  if (/(?:browser automation|browser integration|browser engine|running in (?:the|a) browser|runs in (?:the|a) browser|setup guide|privacy setup|migration|migrate|import (?:reset|bookmarks|history)|look and behave like|browser profile|connect your browser|download manager|(?:ios|android)[- ](?:only|browser))/i.test(text)) return false;
+  if (/(?:browser automation|browser integration|browser engine|accessible (?:from|in|via|through).{0,80}browser|running in (?:the|a) browser|runs in (?:the|a) browser|setup guide|privacy setup|migration|migrate|import (?:reset|bookmarks|history)|look and behave like|browser profile|connect your browser|download manager|(?:ios|android)[- ](?:only|browser))/i.test(text)) return false;
   if (/\b(?:ios|android)\b/i.test(text) && !/\b(?:macos|mac os|windows|linux|desktop)\b/i.test(text)) return false;
   // Require affirmative evidence that the project itself is a desktop browser.
   return /\b(?:web|desktop|chromium|webkit|gecko|firefox|macos|windows|linux|electron|swift|native|open.source|private|minimal|keyboard.driven)\b(?:[ -]+[a-z0-9]+){0,3}[ -]+browser\b|\bbrowser\s+(?:for\s+(?:macos|mac os|windows|linux|desktop)|(?:built|based)\s+(?:on|with|using)|with\s+(?:vertical tabs|sidebar|tabs|extensions))\b/i.test(text);

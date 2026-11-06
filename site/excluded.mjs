@@ -3,6 +3,6 @@ const excluded = new Set([
   "mikklfr/browser2zen", "manuelpuyol/firefox-zen", "rajsoni76515/brave-private-browsing-setup",
   "dorianganessa/fourdock-macos", "webkit/webkit", "pmirvine/risc-os",
   "dracievajko/auto-deal-researcher", "aeonfun/opendia", "vibe-karlo/roko-browser",
-  "sakibshahariar/mediagrab", "929229kkk/duck-browser"
+  "sakibshahariar/mediagrab", "929229kkk/duck-browser", "dimakis/mitzo"
 ]);
 export const isExcludedBrowser = id => excluded.has(String(id || "").toLowerCase());

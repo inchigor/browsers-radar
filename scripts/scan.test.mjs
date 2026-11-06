@@ -132,6 +132,7 @@ test('reject non-browser integrations, tools, engines and mobile-only apps',()=>
     ['risc-os','A recreation of the RISC OS desktop running in the browser'],
     ['auto-deal-researcher','Beta release with LLM integration and browser automation'],
     ['MediaGrab','A native Linux download manager with video capture and browser integration'],
+    ['mitzo','A self-hosted workspace for AI conversations accessible from your phone or desktop browser'],
     ['roko-browser','roko: a fast, private iOS browser in the spirit of Arc Search'],
     ['mobile-browser','A Chromium browser for Android'],
     ['opendia','Connect your browser to AI models. Just use Dia on Chrome']
