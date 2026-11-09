@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-11-06T17:05:54.160Z",
+  "scannedAt": "2026-11-09T18:50:21.531Z",
   "queries": [
     "\"arc browser\" alternative in:name,description,readme archived:false",
     "\"vertical tabs\" browser macos in:description,readme archived:false",
@@ -290,9 +290,29 @@
       "repo": "dimakis/mitzo",
       "summary": "A self-hosted workspace for AI conversations and agent-assisted work, accessible from your phone or desktop browser, with an optional native iOS app.",
       "discoveredAt": "2026-11-06T17:01:19.533Z"
+    },
+    {
+      "id": "Frenvius/rail-browser",
+      "name": "rail-browser",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": "https://railbrowser.app",
+      "repo": "Frenvius/rail-browser",
+      "summary": "Sidebar-only desktop browser on ungoogled Chromium",
+      "discoveredAt": "2026-11-09T18:50:21.531Z"
+    },
+    {
+      "id": "larosa023/drift-browser",
+      "name": "drift-browser",
+      "engine": "Unverified",
+      "platform": "Not verified",
+      "url": null,
+      "repo": "larosa023/drift-browser",
+      "summary": "A lightweight Chromium browser with Zen-style vertical tabs and Brave-style shields.",
+      "discoveredAt": "2026-11-09T18:50:21.531Z"
     }
   ],
-  "attemptedAt": "2026-11-06T17:05:54.160Z",
+  "attemptedAt": "2026-11-09T18:50:21.531Z",
   "status": "success",
   "searchFailures": 0,
   "metricFailures": 0
