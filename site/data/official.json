@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "attemptedAt": "2026-11-05T19:13:42.933Z",
+  "attemptedAt": "2026-11-10T17:17:09.356Z",
   "status": "success",
   "sources": {
     "official/dia": {
       "sourceUrl": "https://www.diabrowser.com/changelog",
-      "checkedAt": "2026-11-05T19:13:42.933Z",
+      "checkedAt": "2026-11-10T17:17:09.356Z",
       "releases": {
         "macOS": {
           "version": "1.56.0",
@@ -23,7 +23,7 @@
     },
     "official/orion": {
       "sourceUrl": "https://browser.kagi.com/updates/orion-release-notes.html",
-      "checkedAt": "2026-11-05T19:13:42.933Z",
+      "checkedAt": "2026-11-10T17:17:09.356Z",
       "releases": {
         "macOS": {
           "version": "1.1",
